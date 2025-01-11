@@ -1,0 +1,107 @@
+/* SF Pro Display Light */
+@font-face {
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("/fonts/SFProDisplay-Light.woff2") format("woff2"),
+    url("/fonts/SFProDisplay-Light.woff") format("woff"),
+    url("/fonts/SFProDisplay-Light.ttf") format("truetype");
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* SF Pro Display Regular */
+@font-face {
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/SFProDisplay-Regular.woff2") format("woff2"),
+    url("/fonts/SFProDisplay-Regular.woff") format("woff"),
+    url("/fonts/SFProDisplay-Regular.ttf") format("truetype");
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* SF Pro Display Medium (already defined) */
+@font-face {
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/SFProDisplay-Medium.woff2") format("woff2"),
+    url("/fonts/SFProDisplay-Medium.woff") format("woff"),
+    url("/fonts/SFProDisplay-Medium.ttf") format("truetype");
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* SF Pro Display Semi-Bold */
+@font-face {
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/SFProDisplay-SemiBold.woff2") format("woff2"),
+    url("/fonts/SFProDisplay-SemiBold.woff") format("woff"),
+    url("/fonts/SFProDisplay-SemiBold.ttf") format("truetype");
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* SF Pro Display Bold */
+@font-face {
+  font-family: "SF Pro Display";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/SFProDisplay-Bold.woff2") format("woff2"),
+    url("/fonts/SFProDisplay-Bold.woff") format("woff"),
+    url("/fonts/SFProDisplay-Bold.ttf") format("truetype");
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* SF Pro Display Italic */
+@font-face {
+  font-family: "SF Pro Display";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/SFProDisplay-RegularItalic.woff2") format("woff2"),
+    url("/fonts/SFProDisplay-RegularItalic.woff") format("woff"),
+    url("/fonts/SFProDisplay-RegularItalic.ttf") format("truetype");
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* SF Pro Display Medium Italic */
+@font-face {
+  font-family: "SF Pro Display";
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/SFProDisplay-MediumItalic.woff2") format("woff2"),
+    url("/fonts/SFProDisplay-MediumItalic.woff") format("woff"),
+    url("/fonts/SFProDisplay-MediumItalic.ttf") format("truetype");
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* SF Pro Display Semi-Bold Italic */
+@font-face {
+  font-family: "SF Pro Display";
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/SFProDisplay-SemiBoldItalic.woff2") format("woff2"),
+    url("/fonts/SFProDisplay-SemiBoldItalic.woff") format("woff"),
+    url("/fonts/SFProDisplay-SemiBoldItalic.ttf") format("truetype");
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
+
+/* SF Pro Display Bold Italic */
+@font-face {
+  font-family: "SF Pro Display";
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/SFProDisplay-BoldItalic.woff2") format("woff2"),
+    url("/fonts/SFProDisplay-BoldItalic.woff") format("woff"),
+    url("/fonts/SFProDisplay-BoldItalic.ttf") format("truetype");
+  unicode-range: U+0100-024F, U+1E00-1EFF, U+20A0-20CF, U+2C60-2C7F, U+A720-A7FF;
+}
