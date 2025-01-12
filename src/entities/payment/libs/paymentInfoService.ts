@@ -3,7 +3,10 @@ import { IPaymentParam } from "../types";
 class PaymentInfoService {
   public getPaymentInfo() {
     const paymentInfo = localStorage.getItem("paymentInfo") ?? "";
-    return JSON.parse(paymentInfo);
+    if (paymentInfo) {
+      return JSON.parse(paymentInfo);
+    }
+    return null;
   }
 
   public setPaymentInfo(paymentInfo: IPaymentParam) {

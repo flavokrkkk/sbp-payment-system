@@ -11,8 +11,9 @@ export const paramsPayment: Array<PaymentParam> = [
   "bank",
   "crc",
   "cur",
-  "orderId",
+  "order_id",
   "shop",
+  "shop_tag",
   "sum",
   "type",
 ];

@@ -1,7 +1,21 @@
 import CodePayOutlined from "../../../../../public/icons/codePay.svg";
+import DangerCircleOutlined from "../../../../../public/icons/dangerCircle.svg";
+import CloseCircleOutlined from "../../../../../public/icons/closeCircle.svg";
+import SuccesCircleOutlined from "../../../../../public/icons/successCircle.svg";
+import CodeePaySmallLogoOutlined from "../../../../../public/icons/codePaySmallLogo.svg";
+import SbpIconOutlined from "../../../../../public/icons/sbpIcon.svg";
+import BgTifanyOutlined from "../../../../../public/icons/Left-tiffany.svg";
+import BgPinkOutlined from "../../../../../public/icons/right-t&pink.svg";
 
 export const enum IconTypes {
   CODE_PAY_OUTLINED,
+  DANGER_CIRCLE_OUTLINED,
+  CLOSE_CIRCLE_OUTLINED,
+  SUCCESS_CIRCLE_OUTLINED,
+  CODE_PAY_SMALL_LOGO_OUTLINED,
+  SBP_ICON_OUTLINED,
+  BG_TIFFANY_OUTLINED,
+  BG_PINK_OUTLINED,
 }
 
 export type IconDictionaryType = {
@@ -10,6 +24,13 @@ export type IconDictionaryType = {
 
 export const IconDictionary: IconDictionaryType = {
   [IconTypes.CODE_PAY_OUTLINED]: CodePayOutlined,
+  [IconTypes.DANGER_CIRCLE_OUTLINED]: DangerCircleOutlined,
+  [IconTypes.CLOSE_CIRCLE_OUTLINED]: CloseCircleOutlined,
+  [IconTypes.SUCCESS_CIRCLE_OUTLINED]: SuccesCircleOutlined,
+  [IconTypes.CODE_PAY_SMALL_LOGO_OUTLINED]: CodeePaySmallLogoOutlined,
+  [IconTypes.SBP_ICON_OUTLINED]: SbpIconOutlined,
+  [IconTypes.BG_TIFFANY_OUTLINED]: BgTifanyOutlined,
+  [IconTypes.BG_PINK_OUTLINED]: BgPinkOutlined,
 };
 export const enum IconSizes {
   SMALL,

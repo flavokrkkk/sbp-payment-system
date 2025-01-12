@@ -13,7 +13,7 @@ export default defineConfig({
         svgo: false,
         titleProp: true,
       },
-      include: "**/*.svg",
+      include: ["lucide-react", "**/*.svg", "react-qrcode-logo"],
     }),
   ],
   resolve: {

@@ -1,3 +1,3 @@
 export const enum ERouteNames {
-  PAYMENT_PAGE = "/:paymentId",
+  PAYMENT_PAGE = "pay/:paymentId",
 }

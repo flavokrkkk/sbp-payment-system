@@ -5,5 +5,11 @@ export interface IPaymentParam {
   cur?: string;
   crc?: string;
   shop: string;
-  orderId: string;
+  paymentId?: string;
+  shop_tag: string;
+  order_id: string;
+}
+
+export interface IPaymentStatusResponse {
+  status: boolean | null;
 }

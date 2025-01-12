@@ -5,4 +5,5 @@ export type PaymentParam =
   | "cur"
   | "crc"
   | "shop"
-  | "orderId";
+  | "order_id"
+  | "shop_tag";
