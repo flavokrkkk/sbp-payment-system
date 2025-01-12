@@ -1,13 +1,17 @@
-import { paymentSelectors } from "@/entities/payment";
-import { useAppSelector } from "@/shared";
+import { IPaymentParam } from "@/entities/payment";
+
 import { useCopied } from "@/shared/hooks/useCopied";
 import clsx from "clsx";
 import { ChevronDown, ChevronUp, Copy } from "lucide-react";
-import { useCallback, useState } from "react";
+import { FC, useCallback, useState } from "react";
 
-const PaymentInfoBadge = () => {
+interface IPaymentInfoBadge {
+  payment: IPaymentParam | null;
+}
+
+const PaymentInfoBadge: FC<IPaymentInfoBadge> = ({ payment }) => {
   const [isActiveDetail, setIsActiveDetail] = useState(false);
-  const payment = useAppSelector(paymentSelectors.paymentParams);
+
   const { handleCopyClick, isCopied } = useCopied(String(payment?.order_id));
 
   const toggleDetailInfo = useCallback(
@@ -45,8 +49,15 @@ const PaymentInfoBadge = () => {
           )}
         </span>
       </div>
-      {isActiveDetail && (
-        <div className=" flex flex-col space-y-2 ] font-bold">
+      <div
+        className={clsx(
+          "overflow-hidden transition-all duration-200 ease-in-out",
+          isActiveDetail
+            ? "max-h-[500px] opacity-100 py-2"
+            : "max-h-0 opacity-0"
+        )}
+      >
+        <div className="flex flex-col space-y-2">
           <div className="items-center flex space-x-6">
             <h2>ID транзакции</h2>
             <span>
@@ -60,12 +71,12 @@ const PaymentInfoBadge = () => {
             </span>
           </div>
           <div>
-            <span className="bg-dark-600 p-1 rounded-lg">
+            <span className="bg-dark-300 p-[6px] px-3 rounded-lg font-light">
               {payment?.order_id}
             </span>
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 };

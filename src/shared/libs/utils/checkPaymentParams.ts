@@ -4,7 +4,8 @@ import { objectIsValid } from "./objectValid";
 export const checkPaymentParams = (
   payInfoUrl: IPaymentParam,
   payInfoLocal: IPaymentParam,
-  callback: (param: IPaymentParam) => void
+  callback: (param: IPaymentParam) => void,
+  helperCallback: () => void
 ) => {
   const isLocalValid = objectIsValid(payInfoLocal);
   const isUrlValid = objectIsValid(payInfoUrl);
@@ -16,6 +17,11 @@ export const checkPaymentParams = (
 
   if (isLocalValid) {
     callback(payInfoLocal);
+    return;
+  }
+
+  if (!isUrlValid && !isLocalValid) {
+    helperCallback();
     return;
   }
 };

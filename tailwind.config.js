@@ -11,6 +11,8 @@ export default {
           400: "#272C3B",
           500: "#1a1a1a",
           600: "#3E465E",
+          700: "#0C0D12",
+          800: "#07080B",
         },
         "dark-blue": "rgba(31, 35, 47, 1)",
         "fluorescent-blue": "rgba(12, 179, 168, 1)",

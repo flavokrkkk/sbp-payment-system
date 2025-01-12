@@ -25,7 +25,11 @@ export const Icon: FC<IconProps> = ({
   ariaLabel = "icon",
 }) => {
   const SvgIcon = IconDictionary[type];
-  const MemoizedSvgIcon = memo(SvgIcon);
+  const MemoizedSvgIcon = memo(
+    SvgIcon as unknown as React.FunctionComponent<
+      React.SVGAttributes<SVGElement>
+    >
+  );
   return (
     <MemoizedSvgIcon
       onClick={onClick}

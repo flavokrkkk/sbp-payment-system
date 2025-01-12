@@ -6,6 +6,7 @@ export enum ButtonColors {
   BLACK,
   TRANSPARENT_BLACK,
   DODGER_BLUE,
+  TIFFANY,
 }
 
 export enum ButtonSizes {
@@ -55,6 +56,10 @@ export const ButtonColorClasses: Record<ButtonColors, IButtonClasses> = {
     activeClasses: "bg-dark-300 text-white",
     disableClasses: "bg-gray-300 text-gray-500",
   },
+  [ButtonColors.TIFFANY]: {
+    activeClasses: "bg-[#10EADB] text-black",
+    disableClasses: "bg-gray-300 text-gray-500",
+  },
   [ButtonColors.TRANSPARENT_BLACK]: {
     activeClasses: "bg-transparent text-white",
     disableClasses: "bg-gray-300 text-gray-500",
@@ -64,7 +69,7 @@ export const ButtonColorClasses: Record<ButtonColors, IButtonClasses> = {
 export const ButtonSizeClasses: Record<ButtonSizes, string> = {
   [ButtonSizes.LARGE]: "px-[95px] py-[6px] text-base",
   [ButtonSizes.MEDIUM]: "p-5",
-  [ButtonSizes.SMALL]: "px-[20px] py-[5px]",
+  [ButtonSizes.SMALL]: "p-3",
 };
 export const ButtonBorderSizeClasses: Record<ButtonBorderSizes, string> = {
   [ButtonBorderSizes.NONE]: "border-0",

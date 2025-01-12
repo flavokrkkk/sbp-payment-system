@@ -16,18 +16,22 @@ const CheckCode = () => {
   const { isTabletView } = useResize();
 
   return (
-    <div className="w-full h-full flex justify-center sm:items-center bg-[#07080B]">
+    <div className="w-full h-screen flex justify-center sm:items-center bg-dark-800">
       <Icon
         type={IconTypes.BG_PINK_OUTLINED}
-        className="absolute bottom-0 right-0"
+        className="absolute bottom-0 right-0 max-w-[100vw] max-h-[100vh] overflow-hidden"
       />
-      <section className="flex flex-col items-center sm:items-start space-y-10">
+      <section className="flex flex-col items-center sm:items-start space-y-8 sm:space-y-10 ">
+        <h1 className="text-3xl font-bold hidden sm:block">{payment?.shop}</h1>
+        <span className="mt-7 sm:hidden">
+          <Icon type={IconTypes.CODE_PAY_OUTLINED} />
+        </span>
         <div className="bg-dark-500 p-3 rounded-3xl">
           <QRCode
             value={paymentLink}
             size={isTabletView ? 270 : 300}
             bgColor="#1a1a1a"
-            fgColor="#0CB3A8"
+            fgColor="#fff"
             logoImage="/icons/codePaySmallLogo.svg"
             logoWidth={60}
             logoHeight={60}
@@ -36,7 +40,7 @@ const CheckCode = () => {
             logoPadding={-5}
           />
         </div>
-        <div>
+        <div className="text-white">
           <h1 className="text-[24px] sm:text-[40px] font-bold text-center sm:text-start">
             Для оплаты
           </h1>

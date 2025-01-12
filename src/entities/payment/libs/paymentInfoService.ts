@@ -16,7 +16,20 @@ class PaymentInfoService {
   public clearPaymentInfo() {
     localStorage.removeItem("paymentInfo");
   }
+
+  public setPaymentBank(bankId: number) {
+    localStorage.setItem("paymentBank", JSON.stringify(bankId));
+  }
+
+  public getPaymentBank() {
+    return localStorage.getItem("paymentBank");
+  }
 }
 
-export const { clearPaymentInfo, getPaymentInfo, setPaymentInfo } =
-  new PaymentInfoService();
+export const {
+  clearPaymentInfo,
+  getPaymentInfo,
+  setPaymentInfo,
+  setPaymentBank,
+  getPaymentBank,
+} = new PaymentInfoService();

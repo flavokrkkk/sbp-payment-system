@@ -3,6 +3,7 @@ import { FC, memo, useRef } from "react";
 import clsx from "clsx";
 import { X } from "lucide-react";
 import { useKeyDown } from "@/shared/hooks/useKeyDown";
+import { createPortal } from "react-dom";
 
 export enum CanvasScreenWidths {
   SM,
@@ -97,15 +98,15 @@ export const Canvas: FC<ICanvas> = memo(
       event.stopPropagation();
     };
 
-    return (
+    return createPortal(
       <div
         ref={canvasRef}
         className={clsx(
           "fixed left-0 top-0 z-50 flex h-full w-screen bg-shade-100",
           CanvasPositionClasses[canvasPosition],
           isOpen
-            ? "pointer-events-auto opacity-100"
-            : "pointer-events-none opacity-0 delay-150 duration-[225ms]",
+            ? "pointer-events-auto opacity-100 "
+            : "-translate-x-full opacity-0",
           CanvasScreenWidthClasses[canvasScreenWidth]
         )}
         onClick={onClose}
@@ -128,7 +129,8 @@ export const Canvas: FC<ICanvas> = memo(
           ></div>
           <main className="h-[calc(100%_-_56px)] pb-4">{children}</main>
         </div>
-      </div>
+      </div>,
+      document.body
     );
   }
 );

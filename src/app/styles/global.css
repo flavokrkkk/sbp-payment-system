@@ -5,3 +5,21 @@
 body {
   font-family: "SF Pro Display", sans-serif;
 }
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #eeeeff;
+  border-radius: 2px;
+  transition: all 0.2s ease-in-out;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #d9ddff;
+}

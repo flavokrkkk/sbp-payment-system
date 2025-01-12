@@ -16,13 +16,20 @@ export const enum IconTypes {
   SBP_ICON_OUTLINED,
   BG_TIFFANY_OUTLINED,
   BG_PINK_OUTLINED,
+  ALPHA_OUTLINED,
+  GAZPROM_OUTLINED,
+  MTS_OUTLINED,
+  RIFHAIZEN_OUTLINED,
+  SBER_OUTLINED,
+  TBAN_OUTLINED,
+  VTB_OUTLINED,
 }
 
 export type IconDictionaryType = {
-  [key in IconTypes]: React.FunctionComponent<React.SVGAttributes<SVGElement>>;
+  [key in IconTypes]: string;
 };
 
-export const IconDictionary: IconDictionaryType = {
+export const IconDictionary: Record<string, string> = {
   [IconTypes.CODE_PAY_OUTLINED]: CodePayOutlined,
   [IconTypes.DANGER_CIRCLE_OUTLINED]: DangerCircleOutlined,
   [IconTypes.CLOSE_CIRCLE_OUTLINED]: CloseCircleOutlined,

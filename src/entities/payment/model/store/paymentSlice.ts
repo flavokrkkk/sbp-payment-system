@@ -8,9 +8,16 @@ import { IPaymentStore } from "./types";
 import { IPaymentParam, IPaymentStatusResponse } from "../../types/types";
 import { setPaymentInfo } from "../../libs/paymentInfoService";
 import { objectIsValid } from "@/shared/libs/utils/objectValid";
+import { banksList, IBank } from "@/shared/libs/mocks/banksList";
 
 const initialState: IPaymentStore = {
   paymentParams: null,
+  banksList,
+  banksListFilter: banksList,
+  recentBank: null,
+  isClose: false,
+  isDanger: false,
+  isSuccess: false,
 };
 
 const createSliceWithThunks = buildCreateSlice({
@@ -22,6 +29,10 @@ export const paymentSlice = createSliceWithThunks({
   initialState,
   selectors: {
     paymentParams: (state) => state.paymentParams,
+    recentBank: (state) => state.recentBank,
+    banksList: (state) => state.banksList,
+    isDanger: (state) => state.isDanger,
+    isClose: (state) => state.isClose,
   },
   reducers: (create) => ({
     setPaymentParams: create.reducer(
@@ -32,6 +43,9 @@ export const paymentSlice = createSliceWithThunks({
     ),
     clearPaymentInfo: create.reducer((state) => {
       state.paymentParams = null;
+    }),
+    updateStatus: create.reducer((state) => {
+      state.isDanger = true;
     }),
     validateStatusPayment: create.asyncThunk<
       { data: IPaymentParam; status: IPaymentStatusResponse },
@@ -52,16 +66,13 @@ export const paymentSlice = createSliceWithThunks({
             return {
               data: payload,
               status: {
+                //отображаю статус запроса
                 status: true,
               },
             };
           } else {
-            return {
-              data: payload,
-              status: {
-                status: null,
-              },
-            };
+            dispatch(paymentActions.updateStatus());
+            return rejectWithValue("No valid params");
           }
         } catch (e) {
           return rejectWithValue(String(e));
@@ -71,8 +82,24 @@ export const paymentSlice = createSliceWithThunks({
         fulfilled: (state, { payload }) => {
           if (!payload.status.status) {
             state.paymentParams = null;
+            state.isClose = true;
           }
         },
+      }
+    ),
+    searchBank: create.reducer((state, { payload }: PayloadAction<string>) => {
+      state.banksList = state.banksListFilter.filter((bank) =>
+        bank.title.toLowerCase().includes(payload.toLowerCase())
+      );
+    }),
+    setRecentBank: create.reducer(
+      (state, { payload }: PayloadAction<IBank["id"]>) => {
+        const searchBank = state.banksList.findIndex(
+          (bank) => bank.id === payload
+        );
+        if (~searchBank) {
+          state.recentBank = state.banksList[searchBank];
+        }
       }
     ),
   }),

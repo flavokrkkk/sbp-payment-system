@@ -3,12 +3,16 @@ import CheckCode from "@/features/payment/ui/checkCode";
 import PaymentDetails from "../../../features/payment/ui/paymentDetails";
 import { useAppSelector } from "@/shared";
 import DangerPayment from "@/features/badge/dangerPayment";
+import ClosePayment from "@/features/badge/closePayment";
 
 const PaymentPage = () => {
-  const paymentParam = useAppSelector(paymentSelectors.paymentParams);
+  const isDanger = useAppSelector(paymentSelectors.isDanger);
+  const isClose = useAppSelector(paymentSelectors.isClose);
+
   usePayment();
 
-  if (!paymentParam) return <DangerPayment />;
+  if (isDanger) return <DangerPayment />;
+  if (isClose) return <ClosePayment />;
 
   return (
     <div className="flex text-white items-center h-full w-full justify-around">

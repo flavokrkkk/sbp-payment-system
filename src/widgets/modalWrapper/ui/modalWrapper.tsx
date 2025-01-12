@@ -12,7 +12,7 @@ const ModalWrapper: FC<PropsWithChildren & IModalWrapper> = ({
   className,
 }) => {
   return (
-    <div className="h-full relative ">
+    <div className="h-full relative">
       <div
         className={clsx(
           "absolute left-1/2 top-1/2 transform -translate-x-1/2",
