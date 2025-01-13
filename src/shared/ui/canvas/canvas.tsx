@@ -53,9 +53,8 @@ export const CanvasTransitionClasses: {
     closed: "",
   },
   [CanvasPositions.START]: {
-    opened: "translate-x-0 duration-[600ms] w-[295px] rounded-r-3xl",
-    closed:
-      "-translate-x-full duration-[600ms] ease-in-out w-[295px] rounded-r-3xl",
+    opened: "translate-x-0  w-[295px] rounded-r-3xl",
+    closed: "-translate-x-full  ease-in-out w-[295px] rounded-r-3xl",
   },
   [CanvasPositions.END]: {
     opened: "translate-x-0 duration-[400ms] w-[295px] rounded-r-3xl",
@@ -74,6 +73,7 @@ export const CanvasScreenWidthClasses: { [key in CanvasScreenWidths]: string } =
 
 interface ICanvas {
   isOpen: boolean;
+  duration: number;
   canvasBg?: CanvasBackgrounds;
   canvasScreenWidth?: CanvasScreenWidths;
   canvasPosition?: CanvasPositions;
@@ -84,6 +84,7 @@ interface ICanvas {
 export const Canvas: FC<ICanvas> = memo(
   ({
     isOpen,
+    duration,
     canvasBg = CanvasBackgrounds.VIOLET,
     canvasPosition = CanvasPositions.START,
     canvasScreenWidth = CanvasScreenWidths.XL,
@@ -107,7 +108,7 @@ export const Canvas: FC<ICanvas> = memo(
         className={clsx(
           "fixed inset-0 z-50 flex h-screen w-screen bg-shade-100",
           CanvasPositionClasses[canvasPosition],
-          isOpen ? "pointer-events-auto" : "pointer-events-none opacity-0",
+          isOpen ? "pointer-events-auto " : "pointer-events-none opacity-0",
           CanvasScreenWidthClasses[canvasScreenWidth]
         )}
         onClick={onClose}
@@ -118,7 +119,8 @@ export const Canvas: FC<ICanvas> = memo(
             CanvasBackgroundClasses[canvasBg],
             CanvasTransitionClasses[canvasPosition][
               isOpen ? "opened" : "closed"
-            ]
+            ],
+            isOpen ? `duration-[700ms]` : `duration-[${duration}ms]`
           )}
           onClick={changeCanvasContent}
         >

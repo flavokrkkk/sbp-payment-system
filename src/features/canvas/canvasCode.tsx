@@ -16,6 +16,7 @@ const CanvasCode: FC<ICanvasCode> = ({ isVisible, onVisible }) => {
   return (
     <Canvas
       isOpen={isVisible}
+      duration={1000}
       canvasPosition={CanvasPositions.START}
       onClose={onVisible}
       canvasBg={CanvasBackgrounds.WHITE}

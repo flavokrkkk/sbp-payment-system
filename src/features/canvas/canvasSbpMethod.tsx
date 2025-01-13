@@ -40,6 +40,7 @@ const CanvasSbpMethod: FC<ICanvasSbpMethod> = ({
   return (
     <Canvas
       isOpen={isVisible}
+      duration={700}
       canvasPosition={CanvasPositions.START}
       onClose={onVisible}
       canvasBg={CanvasBackgrounds.WHITE}
