@@ -17,7 +17,7 @@ const CanvasCode: FC<ICanvasCode> = ({ isVisible, onVisible }) => {
     <Canvas
       isOpen={isVisible}
       duration={1000}
-      canvasPosition={CanvasPositions.START}
+      canvasPosition={CanvasPositions.END}
       onClose={onVisible}
       canvasBg={CanvasBackgrounds.WHITE}
       canvasScreenWidth={CanvasScreenWidths.MD}

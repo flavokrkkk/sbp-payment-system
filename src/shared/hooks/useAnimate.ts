@@ -18,7 +18,7 @@ export const useAnimate = (
       } else {
         gsap.to(ref.current, {
           duration: 1.5,
-          x: "-100vw",
+          x: "100vw",
           opacity: 0,
           ease: "power3.inOut",
           onComplete: () => {
