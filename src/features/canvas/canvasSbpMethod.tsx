@@ -47,13 +47,13 @@ const CanvasSbpMethod: FC<ICanvasSbpMethod> = ({
     >
       <div className="w-full h-full">
         <div className="p-5 space-y-5">
-          <div
+          <button
             className="flex items-center space-x-2 cursor-pointer text-white"
             onClick={onVisible}
           >
             <ChevronLeft className="w-4 h-4" />
             <span>Вернутся</span>
-          </div>
+          </button>
           <section className="flex flex-col space-y-3">
             <SbpBadge />
             <Input
