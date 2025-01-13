@@ -119,9 +119,11 @@ export const Canvas: FC<ICanvas> = memo(
             CanvasBackgroundClasses[canvasBg],
             CanvasTransitionClasses[canvasPosition][
               isOpen ? "opened" : "closed"
-            ],
-            isOpen ? `duration-[700ms]` : `duration-[${duration}ms]`
+            ]
           )}
+          style={{
+            transitionDuration: isOpen ? `700ms` : `${duration}ms`,
+          }}
           onClick={changeCanvasContent}
         >
           <div
