@@ -9,6 +9,7 @@ import { IPaymentParam, IPaymentStatusResponse } from "../../types/types";
 import { setPaymentInfo } from "../../libs/paymentInfoService";
 import { objectIsValid } from "@/shared/libs/utils/objectValid";
 import { banksList, IBank } from "@/shared/libs/mocks/banksList";
+import { getPaymentStatus } from "../../libs/paymentService";
 
 const initialState: IPaymentStore = {
   paymentParams: null,
@@ -56,13 +57,11 @@ export const paymentSlice = createSliceWithThunks({
       async (payload, { rejectWithValue, dispatch }) => {
         if (objectIsValid(payload)) {
           try {
-            //await getPaymentStatus(payload.order_id);
-            const response = { data: { status: false } };
+            const response = await getPaymentStatus(payload.order_id);
 
             return {
               data: payload,
               status: {
-                //отображаю статус запроса
                 status: response.data.status,
               },
             };
