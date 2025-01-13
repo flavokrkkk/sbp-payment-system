@@ -36,4 +36,11 @@ export default defineConfig({
       "@lib": path.resolve(__dirname, "src/lib"),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        chunkFileNames: "[name]-[hash].js",
+      },
+    },
+  },
 });
