@@ -22,13 +22,13 @@ const CanvasCode: FC<ICanvasCode> = ({ isVisible, onVisible }) => {
       canvasBg={CanvasBackgrounds.WHITE}
       canvasScreenWidth={CanvasScreenWidths.MD}
     >
-      <div
+      <button
         className="flex items-center space-x-2  cursor-pointer text-white bg-dark-800 px-5 pt-5"
         onClick={onVisible}
       >
         <ChevronLeft className="w-4 h-4" />
         <span>Вернутся</span>
-      </div>
+      </button>
       <CheckCode />
     </Canvas>
   );
