@@ -53,9 +53,9 @@ export const CanvasTransitionClasses: {
     closed: "",
   },
   [CanvasPositions.START]: {
-    opened: "translate-x-0 duration-[400ms] w-[295px] rounded-r-3xl",
+    opened: "translate-x-0 duration-[600ms] w-[295px] rounded-r-3xl",
     closed:
-      "-translate-x-full duration-[400ms] ease-in-out w-[295px] rounded-r-3xl",
+      "-translate-x-full duration-[600ms] ease-in-out w-[295px] rounded-r-3xl",
   },
   [CanvasPositions.END]: {
     opened: "translate-x-0 duration-[400ms] w-[295px] rounded-r-3xl",

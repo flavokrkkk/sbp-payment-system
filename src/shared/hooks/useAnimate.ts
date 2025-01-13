@@ -10,17 +10,17 @@ export const useAnimate = (
     if (ref.current) {
       if (isOpen) {
         gsap.to(ref.current, {
-          duration: 0.5,
+          duration: 0.7,
           x: 0,
           opacity: 1,
-          ease: "power2.out",
+          ease: "power3.out",
         });
       } else {
         gsap.to(ref.current, {
           duration: 1.5,
           x: "-100vw",
           opacity: 0,
-          ease: "power2.in",
+          ease: "power3.inOut",
           onComplete: () => {
             gsap.set(ref.current, { opacity: 0 });
           },
