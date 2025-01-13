@@ -108,14 +108,14 @@ export const Canvas: FC<ICanvas> = memo(
           CanvasPositionClasses[canvasPosition],
           isOpen
             ? "pointer-events-auto opacity-100"
-            : "translate-y-full duration-[1000ms] delay-75 ease-in-out cubic-bezier(0.68, -0.55, 0.27, 1.55) opacity-0",
+            : "translate-y-full duration-[1700ms] delay-100 ease-in-out ",
           CanvasScreenWidthClasses[canvasScreenWidth]
         )}
         onClick={onClose}
       >
         <div
           className={clsx(
-            "relative w-full max-w-[500px] mx-auto ",
+            "relative w-full max-w-full mx-auto ",
             CanvasBackgroundClasses[canvasBg],
             CanvasTransitionClasses[canvasPosition][
               isOpen ? "opened" : "closed"
@@ -127,7 +127,7 @@ export const Canvas: FC<ICanvas> = memo(
             className="absolute top-4 right-4 p-4 text-violet-800"
             onClick={onClose}
           ></div>
-          <main className="flex-1 pb-4 overflow-y-auto">{children}</main>
+          <main className="flex-1 pb-4 overflow-y-auto ">{children}</main>
         </div>
       </div>,
       document.body
