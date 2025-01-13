@@ -21,7 +21,7 @@ const PaymentDetails = memo(() => {
   }, []);
 
   return (
-    <div className="w-full h-screen flex justify-center sm:items-center">
+    <div className="w-full min-h-screen  flex justify-center sm:items-center">
       <Icon
         type={IconTypes.BG_TIFFANY_OUTLINED}
         className="absolute top-0 left-0 max-w-[100vw] max-h-[100vh] overflow-hidden"
@@ -30,6 +30,7 @@ const PaymentDetails = memo(() => {
         type={IconTypes.BG_PINK_OUTLINED}
         className="absolute bottom-0 right-0 z-0 max-w-[100vw] max-h-[100vh] overflow-hidden sm:hidden pointer-events-none"
       />
+
       <section className="flex flex-col space-y-7 sm:space-y-3 w-[353px]">
         <div className="space-y-6 hidden sm:block">
           <span>

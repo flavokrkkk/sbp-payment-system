@@ -11,7 +11,7 @@ const RootPage = () => {
         </div>
       }
     >
-      <div className="bg-dark-700  bg-[url('/images/logo.png')] bg-cover bg-left-bottom bg-fixed">
+      <div className="bg-dark-700 bg-[url('/images/logo.png')] bg-cover bg-left-bottom bg-fixed">
         <Outlet />
       </div>
     </Suspense>
