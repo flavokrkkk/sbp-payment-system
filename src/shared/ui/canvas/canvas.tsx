@@ -102,10 +102,10 @@ export const Canvas: FC<ICanvas> = memo(
       <div
         ref={canvasRef}
         className={clsx(
-          "fixed left-0 top-0 z-50 flex h-full w-screen bg-shade-100",
+          "fixed inset-0 z-50 flex h-screen w-screen bg-shade-100",
           CanvasPositionClasses[canvasPosition],
           isOpen
-            ? "pointer-events-auto opacity-100 "
+            ? "pointer-events-auto opacity-100"
             : "-translate-x-full opacity-0",
           CanvasScreenWidthClasses[canvasScreenWidth]
         )}
@@ -113,6 +113,7 @@ export const Canvas: FC<ICanvas> = memo(
       >
         <div
           className={clsx(
+            "relative w-full max-w-[500px] mx-auto ",
             CanvasBackgroundClasses[canvasBg],
             CanvasTransitionClasses[canvasPosition][
               isOpen ? "opened" : "closed"
@@ -121,13 +122,10 @@ export const Canvas: FC<ICanvas> = memo(
           onClick={changeCanvasContent}
         >
           <div
-            className={clsx(
-              "right-0 p-4 text-violet-800",
-              canvasPosition === CanvasPositions.CENTER && "absolute"
-            )}
+            className="absolute top-4 right-4 p-4 text-violet-800"
             onClick={onClose}
           ></div>
-          <main className="h-[calc(100%_-_56px)] pb-4">{children}</main>
+          <main className="flex-1 pb-4 overflow-y-auto">{children}</main>
         </div>
       </div>,
       document.body

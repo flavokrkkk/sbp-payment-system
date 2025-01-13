@@ -2,7 +2,7 @@ import { IPaymentParam } from "@/entities/payment";
 
 import { useCopied } from "@/shared/hooks/useCopied";
 import clsx from "clsx";
-import { ChevronDown, ChevronUp, Copy } from "lucide-react";
+import { CheckCircle, ChevronDown, ChevronUp, Copy } from "lucide-react";
 import { FC, useCallback, useState } from "react";
 
 interface IPaymentInfoBadge {
@@ -33,22 +33,19 @@ const PaymentInfoBadge: FC<IPaymentInfoBadge> = ({ payment }) => {
           {payment?.shop}
         </a>
       </div>
-      <div className="flex space-x-6 items-center">
+      <button
+        className="flex space-x-6 items-center"
+        onClick={toggleDetailInfo}
+      >
         <h2 className="text-xs text-dark-600">Подробнее</h2>
         <span>
           {isActiveDetail ? (
-            <ChevronDown
-              className="h-4 w-4 text-dark-600 font-bold cursor-pointer"
-              onClick={toggleDetailInfo}
-            />
+            <ChevronDown className="h-4 w-4 text-dark-600 font-bold cursor-pointer" />
           ) : (
-            <ChevronUp
-              className="h-4 w-4 text-dark-600 font-bold cursor-pointer"
-              onClick={toggleDetailInfo}
-            />
+            <ChevronUp className="h-4 w-4 text-dark-600 font-bold cursor-pointer" />
           )}
         </span>
-      </div>
+      </button>
       <div
         className={clsx(
           "overflow-hidden transition-all duration-200 ease-in-out",
@@ -57,18 +54,24 @@ const PaymentInfoBadge: FC<IPaymentInfoBadge> = ({ payment }) => {
             : "max-h-0 opacity-0"
         )}
       >
-        <div className="flex flex-col space-y-2">
-          <div className="items-center flex space-x-6">
+        <div className="flex flex-col space-y-2 ">
+          <div className="items-center flex space-x-6 ">
             <h2>ID транзакции</h2>
-            <span>
-              <Copy
-                className={clsx(
-                  "w-5 h-5 text-dark-600 cursor-pointer",
-                  isCopied && "text-green-700"
-                )}
-                onClick={handleCopyClick}
-              />
-            </span>
+            <button
+              className={clsx(
+                "w-5 h-5 text-dark-600 cursor-pointer transition-transform",
+                isCopied ? "text-green-700 animate-pulseOnce" : ""
+              )}
+              onClick={handleCopyClick}
+            >
+              <Copy />
+            </button>
+            {isCopied && (
+              <div className="absolute top-[62px] left-[42%] transform -translate-x-1/2 px-4 py-2 bg-gray-900 text-white text-sm rounded-lg shadow-lg flex items-center space-x-2">
+                <CheckCircle className="w-5 h-5 text-green-500" />
+                <span>Скопировано!</span>
+              </div>
+            )}
           </div>
           <div>
             <span className="bg-dark-300 p-[6px] px-3 rounded-lg font-light">
