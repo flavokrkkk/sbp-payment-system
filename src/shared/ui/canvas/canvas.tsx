@@ -12,11 +12,6 @@ export enum CanvasScreenWidths {
   XL,
 }
 
-export enum CanvasRoundeds {
-  BORDER_TOP_LG,
-  BORDER_RIGHT_XL,
-}
-
 export enum CanvasPositions {
   START,
   CENTER,
