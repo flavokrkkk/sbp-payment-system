@@ -1,4 +1,5 @@
 import CodePayOutlined from "../../../../../public/icons/codePay.svg";
+import CodePayFontOutlined from "../../../../../public/icons/codePayFont.svg";
 import DangerCircleOutlined from "../../../../../public/icons/dangerCircle.svg";
 import CloseCircleOutlined from "../../../../../public/icons/closeCircle.svg";
 import SuccesCircleOutlined from "../../../../../public/icons/successCircle.svg";
@@ -16,13 +17,7 @@ export const enum IconTypes {
   SBP_ICON_OUTLINED,
   BG_TIFFANY_OUTLINED,
   BG_PINK_OUTLINED,
-  ALPHA_OUTLINED,
-  GAZPROM_OUTLINED,
-  MTS_OUTLINED,
-  RIFHAIZEN_OUTLINED,
-  SBER_OUTLINED,
-  TBAN_OUTLINED,
-  VTB_OUTLINED,
+  CODE_PAY_FONT_OUTLINED,
 }
 
 export type IconDictionaryType = {
@@ -38,6 +33,7 @@ export const IconDictionary: Record<string, string> = {
   [IconTypes.SBP_ICON_OUTLINED]: SbpIconOutlined,
   [IconTypes.BG_TIFFANY_OUTLINED]: BgTifanyOutlined,
   [IconTypes.BG_PINK_OUTLINED]: BgPinkOutlined,
+  [IconTypes.CODE_PAY_FONT_OUTLINED]: CodePayFontOutlined,
 };
 export const enum IconSizes {
   SMALL,

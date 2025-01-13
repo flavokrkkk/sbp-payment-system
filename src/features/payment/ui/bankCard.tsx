@@ -33,7 +33,7 @@ const BankCard: FC<IBankCard> = ({
       setRecentBank(bank?.id);
       setPaymentBank(bank?.id);
     }
-    window.open(hyperLink, "_blank");
+    window.open(hyperLink, "_self");
   };
 
   return (

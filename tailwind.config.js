@@ -17,23 +17,23 @@ export default {
         "dark-blue": "rgba(31, 35, 47, 1)",
         "fluorescent-blue": "rgba(12, 179, 168, 1)",
       },
-    },
-    fontFamily: {
-      "sf-pro-display": ["SF Pro Display", "sans-serif"],
-    },
-    animation: {
-      bounceOnce: "bounce 0.5s ease-in-out 1",
-      pulseOnce: "pulse 0.7s ease-in-out 1",
-    },
-    keyframes: {
-      bounce: {
-        "0%, 100%": { transform: "translateY(-10%)" },
-        "50%": { transform: "translateY(0)" },
+      fontFamily: {
+        "sf-pro-display": ["SF Pro Display", "sans-serif"],
       },
-      pulse: {
-        "0%": { transform: "scale(1)" },
-        "50%": { transform: "scale(1.2)" },
-        "100%": { transform: "scale(1)" },
+      animation: {
+        bounceOnce: "bounce 0.5s ease-in-out 1",
+        pulseOnce: "pulse 0.7s ease-in-out 1",
+      },
+      keyframes: {
+        bounce: {
+          "0%, 100%": { transform: "translateY(-10%)" },
+          "50%": { transform: "translateY(0)" },
+        },
+        pulse: {
+          "0%": { transform: "scale(1)" },
+          "50%": { transform: "scale(1.2)" },
+          "100%": { transform: "scale(1)" },
+        },
       },
     },
   },

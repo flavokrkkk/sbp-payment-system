@@ -58,7 +58,6 @@ export const paymentSlice = createSliceWithThunks({
           try {
             //await getPaymentStatus(payload.order_id);
             const response = { data: { status: false } };
-
             return {
               data: payload,
               status: {

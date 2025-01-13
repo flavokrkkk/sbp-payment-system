@@ -17,8 +17,9 @@ const CheckCode = () => {
         type={IconTypes.BG_PINK_OUTLINED}
         className="absolute bottom-0 right-0 max-w-[100vw] max-h-[100vh] overflow-hidden"
       />
-      <section className="flex flex-col items-center sm:items-start space-y-8 sm:space-y-10 ">
+      <section className="flex flex-col items-center sm:items-start space-y-6 sm:space-y-10 ">
         <h1 className="text-3xl font-bold hidden sm:block">{payment?.shop}</h1>
+
         <span className="mt-7 sm:hidden">
           <Icon type={IconTypes.CODE_PAY_OUTLINED} />
         </span>
