@@ -29,7 +29,11 @@ const PaymentInfoBadge: FC<IPaymentInfoBadge> = ({ payment }) => {
       </div>
       <div className="flex space-x-8">
         <h2>Магазин</h2>{" "}
-        <a href={payment?.shop_tag} target="_blank">
+        <a
+          href={payment?.shop_tag}
+          target="_blank"
+          className="underline text-blue-500 hover:text-blue-700"
+        >
           {payment?.shop}
         </a>
       </div>

@@ -54,11 +54,13 @@ export const CanvasTransitionClasses: {
   },
   [CanvasPositions.START]: {
     opened: "translate-x-0 duration-[400ms] w-[295px] rounded-r-3xl",
-    closed: "-translate-x-full duration-[400ms] w-[295px] rounded-r-3xl",
+    closed:
+      "-translate-x-full duration-[400ms] ease-in-out w-[295px] rounded-r-3xl",
   },
   [CanvasPositions.END]: {
     opened: "translate-x-0 duration-[400ms] w-[295px] rounded-r-3xl",
-    closed: "translate-x-full duration-[400ms] w-[295px] rounded-r-3xl",
+    closed:
+      "translate-x-full duration-[400ms] ease-in-out w-[295px] rounded-r-3xl",
   },
 };
 
@@ -106,7 +108,7 @@ export const Canvas: FC<ICanvas> = memo(
           CanvasPositionClasses[canvasPosition],
           isOpen
             ? "pointer-events-auto opacity-100"
-            : "-translate-x-full opacity-0",
+            : "translate-y-full duration-[1000ms] delay-75 ease-in-out cubic-bezier(0.68, -0.55, 0.27, 1.55) opacity-0",
           CanvasScreenWidthClasses[canvasScreenWidth]
         )}
         onClick={onClose}
