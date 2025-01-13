@@ -36,7 +36,6 @@ const CanvasSbpMethod: FC<ICanvasSbpMethod> = ({
     },
     []
   );
-
   return (
     <Canvas
       isOpen={isVisible}
