@@ -9,10 +9,11 @@ import { ChevronRight } from "lucide-react";
 import { FC } from "react";
 
 interface ISbpBadge {
+  isArrow?: boolean;
   onClick?: () => void;
 }
 
-const SbpBadge: FC<ISbpBadge> = ({ onClick = () => {} }) => (
+const SbpBadge: FC<ISbpBadge> = ({ onClick = () => {}, isArrow = true }) => (
   <div className="w-full">
     <Button
       className="w-full flex justify-between"
@@ -26,10 +27,11 @@ const SbpBadge: FC<ISbpBadge> = ({ onClick = () => {} }) => (
         </span>
         <span>Система быстрых платежей</span>
       </div>
-
-      <span>
-        <ChevronRight />
-      </span>
+      {isArrow && (
+        <span>
+          <ChevronRight />
+        </span>
+      )}
     </Button>
   </div>
 );

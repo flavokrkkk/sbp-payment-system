@@ -55,7 +55,7 @@ const CanvasSbpMethod: FC<ICanvasSbpMethod> = ({
             <span>Вернутся</span>
           </button>
           <section className="flex flex-col space-y-3">
-            <SbpBadge />
+            <SbpBadge isArrow={false} />
             <Input
               placeholder="Поиск"
               value={search}
