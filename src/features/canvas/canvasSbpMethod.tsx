@@ -43,7 +43,7 @@ const CanvasSbpMethod: FC<ICanvasSbpMethod> = ({
       canvasPosition={CanvasPositions.CENTER}
       onClose={onVisible}
       canvasBg={CanvasBackgrounds.WHITE}
-      canvasScreenWidth={CanvasScreenWidths.SM}
+      canvasScreenWidth={CanvasScreenWidths.MD}
     >
       <div className="w-full h-full">
         <div className="p-5 space-y-5">

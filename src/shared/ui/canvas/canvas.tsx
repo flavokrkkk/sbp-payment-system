@@ -108,7 +108,7 @@ export const Canvas: FC<ICanvas> = memo(
           CanvasPositionClasses[canvasPosition],
           isOpen
             ? "pointer-events-auto opacity-100"
-            : "translate-y-full duration-[1700ms] delay-100 ease-in-out ",
+            : "translate-y-full duration-[1500ms] delay-200 transition-transform ease-in-out will-change-transform",
           CanvasScreenWidthClasses[canvasScreenWidth]
         )}
         onClick={onClose}
