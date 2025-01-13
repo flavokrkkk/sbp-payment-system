@@ -83,9 +83,11 @@ export const paymentSlice = createSliceWithThunks({
           if (payload.status.status) {
             state.isSuccess = true;
             state.paymentParams = payload.data;
+            setPaymentInfo(payload.data);
           }
           if (!payload.status.status) {
             state.paymentParams = payload.data;
+            setPaymentInfo(payload.data);
           }
         },
         rejected: (state) => {
