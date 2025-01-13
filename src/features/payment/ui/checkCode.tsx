@@ -11,7 +11,6 @@ const CheckCode = () => {
   const paymentLink = useMemo(() => {
     return `https://qr.nspk.ru/${payment?.paymentId}?type=${payment?.type}&bank=${payment?.bank}&sum=${payment?.sum}&cur=${payment?.cur}&crc=${payment?.crc}`;
   }, [payment]);
-  console.log(paymentLink);
   return (
     <div className="w-full h-screen flex justify-center sm:items-center bg-dark-800">
       <Icon

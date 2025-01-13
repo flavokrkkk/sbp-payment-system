@@ -8,11 +8,18 @@ import {
   ButtonColors,
   ButtonRoundSizes,
 } from "@/shared/ui/button/button";
-import { useAppSelector } from "@/shared";
+import { useAction, useAppSelector } from "@/shared";
 import { paymentSelectors } from "@/entities/payment";
 
 const SuccessPayment = () => {
   const payment = useAppSelector(paymentSelectors.paymentParams);
+  const { clearPaymentInfo } = useAction();
+
+  const handleClear = () => {
+    clearPaymentInfo();
+    window.open(payment?.shop_tag ?? "", "_blank");
+  };
+
   return (
     <ModalWrapper className="-translate-y-80">
       <Modal isOpen>
@@ -36,10 +43,9 @@ const SuccessPayment = () => {
                   className="border p-2 "
                   rounded={ButtonRoundSizes.ROUNDED_2XL}
                   bgColor={ButtonColors.TIFFANY}
+                  onClick={handleClear}
                 >
-                  <a href={payment?.shop_tag ?? ""} target="_blank">
-                    Вернуться в магазин
-                  </a>
+                  Вернуться в магазин
                 </Button>
               </div>
             </div>

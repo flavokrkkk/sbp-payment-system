@@ -33,6 +33,7 @@ export const paymentSlice = createSliceWithThunks({
     banksList: (state) => state.banksList,
     isDanger: (state) => state.isDanger,
     isClose: (state) => state.isClose,
+    isSuccess: (state) => state.isSuccess,
   },
   reducers: (create) => ({
     setPaymentParams: create.reducer(
@@ -53,37 +54,42 @@ export const paymentSlice = createSliceWithThunks({
       { rejectValue: string }
     >(
       async (payload, { rejectWithValue, dispatch }) => {
-        try {
-          if (objectIsValid(payload)) {
-            // const response = await getPaymentStatus(payload.order_id);
-            // if (response.data.status) {
-            dispatch(paymentActions.setPaymentParams(payload));
-            // }
-            // if (!response.data.status) {
-            //   dispatch(paymentActions.clearPaymentInfo());
-            // }
+        if (objectIsValid(payload)) {
+          try {
+            //await getPaymentStatus(payload.order_id);
+            const response = { data: { status: false } };
 
             return {
               data: payload,
               status: {
                 //отображаю статус запроса
-                status: true,
+                status: response.data.status,
               },
             };
-          } else {
-            dispatch(paymentActions.updateStatus());
-            return rejectWithValue("No valid params");
+          } catch (e) {
+            return rejectWithValue(String(e));
           }
-        } catch (e) {
-          return rejectWithValue(String(e));
+        } else {
+          dispatch(paymentActions.updateStatus());
+          return rejectWithValue("No valid params");
         }
       },
       {
         fulfilled: (state, { payload }) => {
-          if (!payload.status.status) {
+          if (payload.status.status === null) {
             state.paymentParams = null;
             state.isClose = true;
           }
+          if (payload.status.status) {
+            state.isSuccess = true;
+            state.paymentParams = payload.data;
+          }
+          if (!payload.status.status) {
+            state.paymentParams = payload.data;
+          }
+        },
+        rejected: (state) => {
+          state.isClose = true;
         },
       }
     ),
