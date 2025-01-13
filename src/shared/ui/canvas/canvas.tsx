@@ -1,9 +1,9 @@
 import { FC, memo, useRef } from "react";
-
 import clsx from "clsx";
 import { X } from "lucide-react";
 import { useKeyDown } from "@/shared/hooks/useKeyDown";
 import { createPortal } from "react-dom";
+import { useAnimate } from "@/shared/hooks/useAnimate";
 
 export enum CanvasScreenWidths {
   SM,
@@ -50,7 +50,7 @@ export const CanvasTransitionClasses: {
 } = {
   [CanvasPositions.CENTER]: {
     opened: "translate-y-0 h-screen duration-[400ms] w-full rounded-t-lg",
-    closed: "translate-y-full duration-[400ms] w-full rounded-t-lg",
+    closed: "",
   },
   [CanvasPositions.START]: {
     opened: "translate-x-0 duration-[400ms] w-[295px] rounded-r-3xl",
@@ -91,8 +91,9 @@ export const Canvas: FC<ICanvas> = memo(
     onClose,
   }) => {
     const canvasRef = useRef<HTMLDivElement>(null);
-
     useKeyDown(isOpen, onClose);
+
+    useAnimate(canvasRef, isOpen, [onClose, isOpen]);
 
     const changeCanvasContent = (
       event: React.MouseEvent<HTMLDivElement, MouseEvent>
@@ -106,9 +107,7 @@ export const Canvas: FC<ICanvas> = memo(
         className={clsx(
           "fixed inset-0 z-50 flex h-screen w-screen bg-shade-100",
           CanvasPositionClasses[canvasPosition],
-          isOpen
-            ? "pointer-events-auto opacity-100"
-            : "translate-y-full duration-[1500ms] delay-200 transition-transform ease-in-out will-change-transform",
+          isOpen ? "pointer-events-auto" : "pointer-events-none opacity-0",
           CanvasScreenWidthClasses[canvasScreenWidth]
         )}
         onClick={onClose}
