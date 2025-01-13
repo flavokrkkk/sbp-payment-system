@@ -15,7 +15,7 @@ const PaymentPage = () => {
   if (isClose) return <ClosePayment />;
 
   return (
-    <div className="flex text-white items-center h-full w-full justify-around">
+    <div className="flex text-white items-center h-screen w-full justify-around">
       <PaymentDetails />
       <section className="w-full h-full hidden sm:block">
         <CheckCode />

@@ -1,6 +1,5 @@
 import { paymentSelectors } from "@/entities/payment";
 import { useAppSelector } from "@/shared";
-import { useResize } from "@/shared/hooks/useResize";
 import { IconTypes } from "@/shared/ui/icon/libs/libs";
 import { Icon } from "@/shared/ui/icon/ui/icon";
 import { useMemo } from "react";
@@ -12,9 +11,7 @@ const CheckCode = () => {
   const paymentLink = useMemo(() => {
     return `https://qr.nspk.ru/${payment?.paymentId}?type=${payment?.type}&bank=${payment?.bank}&sum=${payment?.sum}&cur=${payment?.cur}&crc=${payment?.crc}`;
   }, [payment]);
-
-  const { isTabletView } = useResize();
-
+  console.log(paymentLink);
   return (
     <div className="w-full h-screen flex justify-center sm:items-center bg-dark-800">
       <Icon
@@ -29,7 +26,7 @@ const CheckCode = () => {
         <div className="bg-dark-500 p-3 rounded-3xl">
           <QRCode
             value={paymentLink}
-            size={isTabletView ? 270 : 300}
+            size={300}
             bgColor="#1a1a1a"
             fgColor="#fff"
             logoImage="/icons/codePaySmallLogo.svg"

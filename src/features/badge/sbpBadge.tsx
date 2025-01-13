@@ -12,28 +12,26 @@ interface ISbpBadge {
   onClick?: () => void;
 }
 
-const SbpBadge: FC<ISbpBadge> = ({ onClick = () => {} }) => {
-  return (
-    <div className="w-full">
-      <Button
-        className="w-full flex justify-between"
-        rounded={ButtonRoundSizes.ROUNDED_2XL}
-        size={ButtonSizes.MEDIUM}
-        onClick={onClick}
-      >
-        <div className="flex space-x-6">
-          <span>
-            <Icon type={IconTypes.SBP_ICON_OUTLINED} />
-          </span>
-          <span>Система быстрых платежей</span>
-        </div>
-
+const SbpBadge: FC<ISbpBadge> = ({ onClick = () => {} }) => (
+  <div className="w-full">
+    <Button
+      className="w-full flex justify-between"
+      rounded={ButtonRoundSizes.ROUNDED_2XL}
+      size={ButtonSizes.MEDIUM}
+      onClick={onClick}
+    >
+      <div className="flex space-x-6">
         <span>
-          <ChevronRight />
+          <Icon type={IconTypes.SBP_ICON_OUTLINED} />
         </span>
-      </Button>
-    </div>
-  );
-};
+        <span>Система быстрых платежей</span>
+      </div>
+
+      <span>
+        <ChevronRight />
+      </span>
+    </Button>
+  </div>
+);
 
 export default SbpBadge;

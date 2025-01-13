@@ -159,7 +159,7 @@ export const banksList: Array<IBank> = [
   },
   {
     id: 26,
-    title: "Хакасский муниципальный банк-",
+    title: "Хакасский муниципальный банк",
     link: "bank100000000127://qr.nspk.ru",
     images: "https://qr.nspk.ru/proxyapp/logo/bank100000000127.png",
   },

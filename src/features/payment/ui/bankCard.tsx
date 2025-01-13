@@ -52,7 +52,7 @@ const BankCard: FC<IBankCard> = ({
           alt="Bank logo"
           className="mr-4 shrink-0 h-10 w-10 rounded-[10px] object-cover object-center bg-[rgb(var(--bg-color))]"
         />
-        <span>{bank?.title}</span>
+        <span className="truncate max-w-[200px] text-sm">{bank?.title}</span>
       </div>
       <span>
         <ChevronRight />

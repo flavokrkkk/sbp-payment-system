@@ -4,7 +4,6 @@ import axios, {
   AxiosRequestConfig,
   AxiosResponse,
 } from "axios";
-import { RequestOptions } from "https";
 
 export class AxiosClient {
   private baseQueryV1Instance: AxiosInstance;
@@ -32,7 +31,7 @@ export class AxiosClient {
 
   public async get<T>(
     url: string,
-    params: Omit<RequestOptions, "body"> = {}
+    params: Record<string, string> = {}
   ): Promise<AxiosResponse<T>> {
     try {
       const response = await this.baseQueryV1Instance.get<T>(url, { params });
