@@ -23,7 +23,7 @@ const CanvasCode: FC<ICanvasCode> = ({ isVisible, onVisible }) => {
       canvasScreenWidth={CanvasScreenWidths.MD}
     >
       <button
-        className="flex items-center w-full space-x-2 cursor-pointer text-white bg-dark-800 px-5 pt-5 pb-3"
+        className="flex absolute z-40 items-center w-full space-x-2 cursor-pointer text-white bg-dark-800 px-5 pt-5 pb-5"
         onClick={onVisible}
       >
         <ChevronLeft className="w-4 h-4" />

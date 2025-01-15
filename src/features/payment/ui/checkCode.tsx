@@ -11,14 +11,15 @@ const CheckCode = () => {
   const paymentLink = useMemo(() => {
     return `https://qr.nspk.ru/${payment?.paymentId}?type=${payment?.type}&bank=${payment?.bank}&sum=${payment?.sum}&cur=${payment?.cur}&crc=${payment?.crc}`;
   }, [payment]);
+
   return (
     <div className="w-full h-screen flex justify-center sm:items-center bg-dark-800">
       <Icon
         type={IconTypes.BG_PINK_OUTLINED}
         className="absolute bottom-0 right-0 max-w-[100vw] max-h-[100vh] overflow-hidden"
       />
-      <section className="flex flex-col items-center sm:items-start space-y-5 sm:space-y-10 ">
-        <h1 className="text-3xl font-bold hidden sm:block ml-[127px]">
+      <section className="flex relative flex-col items-center sm:items-start space-y-5 sm:space-y-10 ">
+        <h1 className="text-3xl font-bold hidden sm:block -top-4  sm:absolute left-1/4">
           {payment?.shop}
         </h1>
 

@@ -25,7 +25,7 @@ const BankCard: FC<IBankCard> = ({
   const { setRecentBank } = useAction();
 
   const hyperLink = useMemo(() => {
-    return `${bank?.link}/${paymentInfo?.paymentId}?type=${paymentInfo?.type}&amp;bank=${paymentInfo?.bank}&amp;sum=${paymentInfo?.sum}&amp;cur=${paymentInfo?.cur}&amp;crc=${paymentInfo?.crc}`;
+    return `${bank?.link}/${paymentInfo?.paymentId}?type=${paymentInfo?.type}&bank=${paymentInfo?.bank}&sum=${paymentInfo?.sum}&cur=${paymentInfo?.cur}&crc=${paymentInfo?.crc}`;
   }, [paymentInfo]);
 
   const handleNavigateToPayment = () => {

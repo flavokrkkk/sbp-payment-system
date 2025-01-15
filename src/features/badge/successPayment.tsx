@@ -17,7 +17,7 @@ const SuccessPayment = () => {
 
   const handleClear = () => {
     clearPaymentInfo();
-    window.open(`https://t.me/${payment?.shop_tag}` ?? "", "_self");
+    window.open(`https://t.me/${payment?.shop_tag}`, "_self");
   };
 
   return (

@@ -17,7 +17,7 @@ const DangerPayment = () => {
   const handleClear = () => {
     clearPaymentInfo();
     if (payment?.shop_tag) {
-      window.open(`https://t.me/${payment?.shop_tag}` ?? "", "_self");
+      window.open(`https://t.me/${payment?.shop_tag}`, "_self");
     }
   };
 
