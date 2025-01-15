@@ -52,7 +52,7 @@ const CanvasSbpMethod: FC<ICanvasSbpMethod> = ({
             onClick={onVisible}
           >
             <ChevronLeft className="w-4 h-4" />
-            <span>Вернутся</span>
+            <span>Вернуться</span>
           </button>
           <section className="flex flex-col space-y-3">
             <SbpBadge isArrow={false} />

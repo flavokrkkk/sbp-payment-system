@@ -2,8 +2,9 @@ import { IPaymentParam } from "@/entities/payment";
 
 import { useCopied } from "@/shared/hooks/useCopied";
 import clsx from "clsx";
+import Decimal from "decimal.js";
 import { CheckCircle, ChevronDown, ChevronUp, Copy } from "lucide-react";
-import { FC, useCallback, useState } from "react";
+import { FC, useCallback, useMemo, useState } from "react";
 
 interface IPaymentInfoBadge {
   payment: IPaymentParam | null;
@@ -19,18 +20,27 @@ const PaymentInfoBadge: FC<IPaymentInfoBadge> = ({ payment }) => {
     []
   );
 
+  const currentSumCalc = useMemo(() => {
+    if (payment?.sum) {
+      const sum = new Decimal(payment.sum);
+
+      return sum.div(100).toNumber();
+    }
+    return 0;
+  }, [payment]);
+
   return (
     <div className="flex flex-col space-y-3 relative">
       <div className="flex space-x-10">
         <h2 className="text-base">Сумма</h2>{" "}
         <span>
-          {payment?.sum} {payment?.cur}
+          {currentSumCalc} {payment?.cur}
         </span>
       </div>
       <div className="flex space-x-8">
         <h2>Магазин</h2>{" "}
         <a
-          href={payment?.shop_tag}
+          href={`https://t.me/${payment?.shop_tag}`}
           target="_blank"
           className="underline text-blue-500 hover:text-blue-700"
         >

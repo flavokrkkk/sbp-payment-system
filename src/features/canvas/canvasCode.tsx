@@ -27,7 +27,7 @@ const CanvasCode: FC<ICanvasCode> = ({ isVisible, onVisible }) => {
         onClick={onVisible}
       >
         <ChevronLeft className="w-4 h-4" />
-        <span>Вернутся</span>
+        <span>Вернуться</span>
       </button>
       <CheckCode />
     </Canvas>
