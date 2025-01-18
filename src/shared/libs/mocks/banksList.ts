@@ -50,6 +50,12 @@ export const banksList: Array<IBank> = [
     images: "https://qr.nspk.ru/proxyapp/logo/bank100000000001.png",
   },
   {
+    id: 189,
+    title: "Озон Банк (Ozon)",
+    link: "bank100000000273://qr.nspk.ru",
+    images: "https://qr.nspk.ru/proxyapp/logo/bank100000000273.png",
+  },
+  {
     id: 8,
     title: "Промсвязьбанк",
     link: "https://ib.psbank.ru/sbp/payment",

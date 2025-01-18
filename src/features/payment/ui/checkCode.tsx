@@ -19,10 +19,12 @@ const CheckCode = () => {
         className="absolute bottom-0 right-0 max-w-[100vw] max-h-[100vh] overflow-hidden"
       />
       <section className="flex relative flex-col items-center sm:items-start space-y-5 sm:space-y-10 ">
-        <h1 className="text-3xl font-bold hidden sm:block -top-4  sm:absolute left-1/4">
+        <h1 className="text-3xl  font-bold hidden sm:block sm:absolute left-[42%] transform -translate-x-1/2 -top-3">
           {payment?.shop}
         </h1>
-
+        <span className="mt-7 sm:hidden">
+          <Icon type={IconTypes.CODE_PAY_OUTLINED} />
+        </span>
         <span className="mt-7 sm:hidden">
           <Icon type={IconTypes.CODE_PAY_OUTLINED} />
         </span>
