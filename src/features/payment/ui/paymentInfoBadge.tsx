@@ -54,9 +54,9 @@ const PaymentInfoBadge: FC<IPaymentInfoBadge> = ({ payment }) => {
         <h2 className="text-xs text-dark-600">Подробнее</h2>
         <span>
           {isActiveDetail ? (
-            <ChevronDown className="h-4 w-4 text-dark-600 font-bold cursor-pointer" />
-          ) : (
             <ChevronUp className="h-4 w-4 text-dark-600 font-bold cursor-pointer" />
+          ) : (
+            <ChevronDown className="h-4 w-4 text-dark-600 font-bold cursor-pointer" />
           )}
         </span>
       </button>
