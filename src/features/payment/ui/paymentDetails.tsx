@@ -21,7 +21,7 @@ const PaymentDetails = memo(() => {
   }, []);
 
   return (
-    <div className="w-full min-h-screen  flex justify-center sm:items-center">
+    <div className="w-full min-h-screen sm:hidden flex justify-center sm:items-center">
       <section className="flex flex-col space-y-7 sm:space-y-3 w-[353px]">
         <div className="space-y-6 hidden sm:block">
           <span>

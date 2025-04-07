@@ -4,6 +4,7 @@ import { useAppSelector } from "@/shared";
 import DangerPayment from "@/features/badge/dangerPayment";
 import ClosePayment from "@/features/badge/closePayment";
 import SuccessPayment from "@/features/badge/successPayment";
+import PaymentDetails from "@/features/payment/ui/paymentDetails";
 
 const PaymentPage = () => {
   const isDanger = useAppSelector(paymentSelectors.isDanger);
@@ -18,7 +19,7 @@ const PaymentPage = () => {
 
   return (
     <div className="flex items-center h-full w-full justify-around">
-      {/* <PaymentDetails /> */}
+      <PaymentDetails />
       <section className="w-full h-full hidden sm:block">
         <CheckCode />
       </section>
