@@ -1,6 +1,5 @@
 import { paymentSelectors, usePayment } from "@/entities/payment";
 import CheckCode from "@/features/payment/ui/checkCode";
-import PaymentDetails from "../../../features/payment/ui/paymentDetails";
 import { useAppSelector } from "@/shared";
 import DangerPayment from "@/features/badge/dangerPayment";
 import ClosePayment from "@/features/badge/closePayment";
@@ -18,8 +17,8 @@ const PaymentPage = () => {
   if (isSuccess) return <SuccessPayment />;
 
   return (
-    <div className="flex text-white items-center h-full w-full justify-around">
-      <PaymentDetails />
+    <div className="flex items-center h-full w-full justify-around">
+      {/* <PaymentDetails /> */}
       <section className="w-full h-full hidden sm:block">
         <CheckCode />
       </section>

@@ -6,12 +6,12 @@ const RootPage = () => {
   return (
     <Suspense
       fallback={
-        <div className="h-screen w-screen bg-dark-100 flex items-center justify-center">
+        <div className="h-screen w-screen  flex items-center justify-center">
           <Loader />
         </div>
       }
     >
-      <div className="bg-dark-700 bg-[url('/images/logo.png')] bg-cover bg-left-bottom bg-fixed">
+      <div className="bg-[#F0F4FF]">
         <Outlet />
       </div>
     </Suspense>
