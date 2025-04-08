@@ -1,7 +1,7 @@
 import clsx from "clsx";
+import { RussianRuble } from "lucide-react";
 
 const SumBadge = ({
-  cur,
   sum,
   align = "center",
 }: {
@@ -12,13 +12,13 @@ const SumBadge = ({
   return (
     <div
       className={clsx(
-        "text-[28px]  font-bold space-x-2 flex items-center text-blue-mode-100 ",
+        "text-[28px]  font-bold flex items-center text-blue-mode-100 ",
         align === "center" && "text-center justify-center",
         align === "start" && "text-start justify-start"
       )}
     >
       <span>{sum}</span>
-      <span>{cur}</span>
+      <RussianRuble className="font-bold pb-[1px]" />
     </div>
   );
 };

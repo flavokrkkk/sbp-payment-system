@@ -74,14 +74,6 @@ const BankCard: FC<IBankCard> = ({ bank, paymentInfo, className = "" }) => {
           </span>
         </div>
       </Button>
-
-      <div
-        className="absolute -top-2 -right-2 bg-blue-500 text-white text-xs 
-    px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 
-    group-hover:-translate-y-2 transition-all duration-300 z-20"
-      >
-        Выбрать
-      </div>
     </div>
   );
 };

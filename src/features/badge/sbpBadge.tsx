@@ -60,14 +60,6 @@ const SbpBadge: FC<ISbpBadge> = ({ onClick = () => {}, isArrow = true }) => (
         </span>
       )}
     </Button>
-
-    <div
-      className="absolute -top-2 -right-2 bg-yellow-400 text-xs text-dark-600 
-      px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 
-      group-hover:-translate-y-2 transition-all duration-300 z-20"
-    >
-      Быстро!
-    </div>
   </div>
 );
 

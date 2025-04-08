@@ -9,7 +9,6 @@ export type PaymentParam =
   | "shop_tag";
 
 export type PaymentParamSuccess =
-  | "cur"
   | "order_id"
   | "shop"
   | "shop_tag"

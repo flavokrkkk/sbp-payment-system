@@ -11,7 +11,7 @@ export const getSearchParamSuccess = (
   searchParam: URLSearchParams,
   key: PaymentParamSuccess
 ): string => {
-  return decodeURIComponent(searchParam.get(key) ?? "");
+  return searchParam.get(key) ?? "";
 };
 
 export const paramsPayment: Array<PaymentParam> = [
@@ -26,7 +26,6 @@ export const paramsPayment: Array<PaymentParam> = [
 ];
 
 export const paramsSuccessPayment: Array<PaymentParamSuccess> = [
-  "cur",
   "order_id",
   "shop",
   "shop_tag",

@@ -6,7 +6,6 @@ import PaymentMethod from "./paymentMethod";
 import { useAppSelector } from "@/shared";
 import { paymentSelectors } from "@/entities/payment";
 import ShopBadge from "@/features/badge/shopBadge";
-import Footer from "@/widgets/footer";
 import DownloadFile from "@/shared/ui/downloadFile/downloadFile";
 import { EAcceptFiles } from "@/shared/libs/utils/acceptFiles";
 
@@ -26,7 +25,7 @@ const PaymentDetails = memo(() => {
 
   return (
     <div className="w-full min-h-screen sm:hidden flex justify-center sm:items-center">
-      <section className="flex flex-col space-y-7 sm:space-y-3 w-[353px]">
+      <section className="flex flex-col space-y-5 sm:space-y-3 w-[353px]">
         <div className="space-y-6 hidden sm:block">
           <span>
             <Icon type={IconTypes.CODE_PAY_OUTLINED} />
@@ -59,7 +58,6 @@ const PaymentDetails = memo(() => {
           </p>
         </div>
       </section>
-      <Footer />
     </div>
   );
 });

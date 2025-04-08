@@ -10,6 +10,7 @@ import { Input } from "@/shared/ui/input/input";
 import { ChangeEvent, FC, useCallback, useState } from "react";
 import BankList from "../payment/ui/bankList";
 import { IPaymentParam } from "@/entities/payment";
+import { Search } from "lucide-react";
 
 interface ICanvasSbpMethod {
   bankLists: Array<IBank>;
@@ -49,12 +50,18 @@ const CanvasSbpMethod: FC<ICanvasSbpMethod> = ({
             <h2 className="text-center text-[20px] py-2 text-blue-mode-100 font-medium">
               Оплата через СБП
             </h2>
-            <Input
-              placeholder="Название банка"
-              value={search}
-              className="text-blue-mode bg-[#E0E7FB]"
-              onChange={handleChangeSearch}
-            />
+            <div className="relative">
+              <Input
+                placeholder="Название банка"
+                value={search}
+                className="text-blue-mode bg-[#E0E7FB] pr-10"
+                onChange={handleChangeSearch}
+              />
+              <Search
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-blue-mode-100 h-5 w-5"
+                strokeWidth={2}
+              />
+            </div>
           </section>
         </div>
         <BankList bankLists={bankLists} paymentInfo={paymentInfo} />

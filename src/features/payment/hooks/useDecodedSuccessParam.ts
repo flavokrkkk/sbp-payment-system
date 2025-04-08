@@ -2,9 +2,11 @@ import { IPaymentParamSuccess } from "@/entities/payment";
 import { getSearchParamSuccess, paramsSuccessPayment } from "@/shared";
 import { useCallback, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import { useValidatePaymentParams } from "./useValidatePaymentParams";
 
 export const useDecodedSuccessParam = () => {
   const [searchParam] = useSearchParams();
+
   const [paymentParamSuccess, setPaymentParamSuccess] =
     useState<IPaymentParamSuccess | null>(null);
 
@@ -23,6 +25,8 @@ export const useDecodedSuccessParam = () => {
   useEffect(() => {
     handleGetParams();
   }, []);
+
+  useValidatePaymentParams(paymentParamSuccess);
 
   return {
     paymentParamSuccess,

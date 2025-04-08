@@ -25,7 +25,7 @@ export default {
         "fluorescent-blue": "rgba(12, 179, 168, 1)",
       },
       fontFamily: {
-        "sf-pro-display": ["SF Pro Display", "sans-serif"],
+        "sf-pro-display": ["Inter Display", "sans-serif"],
       },
       animation: {
         bounceOnce: "bounce 0.5s ease-in-out 1",

@@ -4,24 +4,24 @@ import { QRCode } from "react-qrcode-logo";
 const GenerateQrCode = ({
   paymentLink,
   isBorder = true,
+  isBg = true,
 }: {
   paymentLink: string | null;
+  isBg?: boolean;
   isBorder?: boolean;
 }) => {
   return (
     <div className="w-full flex justify-center">
       <section
         className={clsx(
-          "rounded-3xl border-zinc-300 flex justify-center items-center flex-col",
-          isBorder && " border border-dashed"
+          "rounded-3xl flex justify-center items-center flex-col",
+          isBorder && "border-2 border-dashed border-[#CFDBFB]"
         )}
         style={{
           position: "relative",
-          borderRadius: "12px",
-          padding: 1,
-          boxShadow: "inset 0 0 0 1px transparent",
-          background:
-            "repeating-linear-gradient(45deg, #D1D5DB 0%, #D1D5DB 4px, transparent 4px, transparent 8px)",
+          borderRadius: "30px",
+          padding: "8px",
+          boxShadow: isBg ? "0 2px 4px rgba(0, 0, 0, 0.1)" : "",
           backgroundClip: "padding-box",
         }}
       >
@@ -30,12 +30,15 @@ const GenerateQrCode = ({
             value={paymentLink ?? ""}
             size={300}
             bgColor={"#F0F4FF"}
-            logoImage="/icons/codePaySmallLogo.svg"
-            logoWidth={60}
-            logoHeight={60}
+            fgColor={"#00103C"}
             removeQrCodeBehindLogo={true}
-            qrStyle="dots"
-            logoPadding={-5}
+            qrStyle="fluid"
+            eyeRadius={15}
+            eyeColor={{
+              outer: "#00103C",
+              inner: "#0ABAB5",
+            }}
+            quietZone={10}
           />
         </div>
 

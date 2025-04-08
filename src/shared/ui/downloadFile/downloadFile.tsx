@@ -8,7 +8,7 @@ const DownloadFile = ({
   children: React.ReactNode;
 }) => {
   return (
-    <a href={`/files/${link}`} download={link}>
+    <a href={`/files/${link}`} target="_blank" rel="noopener noreferrer">
       {children}
     </a>
   );

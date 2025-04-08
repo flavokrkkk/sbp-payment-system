@@ -36,15 +36,13 @@ const SuccessPayment = () => {
         />
       </h1>
       <div
-        className="text-blue-mode-100 border border-dashed rounded-3xl border-zinc-300 relative 
+        className="text-blue-mode-100 border-2 border-dashed rounded-3xl border-zinc-300 relative 
       animate-[slideUp_0.9s_ease-out] bg-white/5"
         style={{
           position: "relative",
-          borderRadius: "12px",
-          padding: 1,
-          boxShadow: "inset 0 0 0 1px transparent",
-          background:
-            "repeating-linear-gradient(45deg, #D1D5DB 0%, #D1D5DB 4px, transparent 4px, transparent 8px)",
+          borderRadius: "30px",
+          padding: "8px",
+          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
           backgroundClip: "padding-box",
         }}
       >

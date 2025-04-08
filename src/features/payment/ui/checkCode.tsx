@@ -8,7 +8,6 @@ import SumBadge from "./sumBadge";
 import GenerateQrCode from "./generateQrCode";
 import { useHyperLink } from "../hooks/useHyperLink";
 import ShopBadge from "@/features/badge/shopBadge";
-import Footer from "@/widgets/footer";
 import DownloadFile from "@/shared/ui/downloadFile/downloadFile";
 import { EAcceptFiles } from "@/shared/libs/utils/acceptFiles";
 
@@ -40,7 +39,7 @@ const CheckCode = () => {
             </div>
 
             <div className="w-full">
-              <ToggleDesc payment={payment} />
+              <ToggleDesc payment={payment} title="Детали платежа" />
             </div>
 
             <p className="text-center text-gray-mode-100 text-[14px]">
@@ -54,7 +53,6 @@ const CheckCode = () => {
           </section>
         </section>
       </div>
-      <Footer />
     </div>
   );
 };

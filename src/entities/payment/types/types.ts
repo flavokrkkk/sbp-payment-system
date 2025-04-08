@@ -11,7 +11,6 @@ export interface IPaymentParam {
 }
 
 export interface IPaymentParamSuccess {
-  cur?: string;
   order_id?: string;
   shop?: string;
   shop_tag?: string;

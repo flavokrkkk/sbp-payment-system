@@ -22,7 +22,7 @@ const PaymentPolling = () => {
             paymentParams?.shop_tag || ""
           }&descr=${data.payment_details?.description ?? ""}&amount=${
             data.payment_details?.amount ?? paymentParams?.sum ?? ""
-          }&order_id=${paymentParams?.order_id}&cur=${paymentParams?.cur}`
+          }&sasas=${paymentParams?.order_id}`
         );
       }
       if (data.is_paid === null) {

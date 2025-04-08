@@ -19,7 +19,7 @@ const ToggleDesc: FC<IToggleDesc> = ({
   const handleToggle = () => setIsVisible((p) => !p);
 
   return (
-    <div className="bg-[#E0E7FB] p-4 rounded-xl w-full space-y-1 transition-all duration-300 hover:shadow-md">
+    <div className="bg-[#E0E7FB] p-4 rounded-2xl w-full space-y-1 transition-all duration-300 hover:shadow-md">
       <section
         className="flex items-center justify-between text-gray-mode-100 cursor-pointer"
         onClick={handleToggle}
