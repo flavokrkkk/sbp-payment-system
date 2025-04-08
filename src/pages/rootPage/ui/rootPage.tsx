@@ -36,24 +36,24 @@ const RootPage = () => {
         />
 
         <div
-          className="absolute hidden sm:block bottom-10 right-16 w-16 h-16 bg-[#E0E7FB]opacity-90 rounded-[30px] 
+          className="absolute hidden sm:block -bottom-2 right-10 w-16 h-16 bg-[#E0E7FB] opacity-90 rounded-[30px] 
       animate-[float_5s_infinite_ease-in-out]"
         />
         <div
-          className="absolute hidden sm:block bottom-10 right-48 w-20 h-20 bg-[#E0E7FB]  rounded-[30px] 
+          className="absolute hidden sm:block bottom-0 right-48 w-20 h-20 bg-[#E0E7FB]  rounded-[30px] 
       animate-[float_6s_infinite_ease-in-out] delay-1000"
         />
         <div
-          className="absolute hidden sm:block bottom-40 right-64 w-[128px] h-[128px] bg-[#E0E7FB] rounded-[30px] 
+          className="absolute hidden sm:block bottom-24 right-64 w-[128px] h-[128px] bg-[#E0E7FB] rounded-[30px] 
       animate-[float_5.5s_infinite_ease-in-out] delay-2000"
         />
 
         <div
-          className="absolute hidden sm:block bottom-36 right-20 w-[96px] h-[96px] bg-[#E0E7FB]  rounded-[30px] 
+          className="absolute hidden sm:block bottom-20 right-20 w-[96px] h-[96px] bg-[#E0E7FB]  rounded-[30px] 
       animate-[float_5.8s_infinite_ease-in-out] delay-400"
         />
         <div
-          className="absolute hidden sm:block bottom-32 right-4 w-10 h-10 bg-[#E0E7FB] rounded-[30px] 
+          className="absolute hidden sm:block bottom-16 right-4 w-10 h-10 bg-[#E0E7FB] rounded-[30px] 
       animate-[float_6.2s_infinite_ease-in-out] delay-1100"
         />
 

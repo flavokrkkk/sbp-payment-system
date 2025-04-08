@@ -78,11 +78,7 @@ const SuccessPayment = () => {
           >
             Оплата успешна
           </h1>
-          <SumBadge
-            sum={currentSumCalc}
-            align="start"
-            cur={paymentParamSuccess?.cur ?? ""}
-          />
+          <SumBadge sum={currentSumCalc} align="start" />
         </section>
       </div>
       <div className="animate-[fadeIn_1.4s_ease-out]">

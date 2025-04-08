@@ -5,7 +5,7 @@ const SumBadge = ({
   sum,
   align = "center",
 }: {
-  cur: string;
+  cur?: string;
   sum: number;
   align?: "center" | "start";
 }) => {

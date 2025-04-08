@@ -16,7 +16,7 @@ const CanvasCode: FC<ICanvasCode> = ({ isVisible, onVisible }) => {
 
   return (
     <Modal isOpen={isVisible} onClose={onVisible}>
-      <section className="bg-[#F0F4FF] w-[350px] rounded-3xl py-3">
+      <section className="bg-[#F0F4FF] md:w-[350px] rounded-3xl py-3">
         <GenerateQrCode
           isBorder={false}
           paymentLink={paymentLink}

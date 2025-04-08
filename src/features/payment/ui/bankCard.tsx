@@ -32,10 +32,10 @@ const BankCard: FC<IBankCard> = ({ bank, paymentInfo, className = "" }) => {
   };
 
   return (
-    <div className="relative group w-full">
+    <div className="relative group w-full ">
       <Button
         className={clsx(
-          "w-full flex justify-between border-2 border-[#CFDBFB] items-center bg-white/10",
+          "w-full flex justify-between border-2  h-[52px] border-[#CFDBFB] items-center bg-white/10",
           "relative overflow-hidden transition-all duration-300",
           "hover:shadow-md hover:border-[#A3BFFA]",
           className && className
@@ -50,12 +50,12 @@ const BankCard: FC<IBankCard> = ({ bank, paymentInfo, className = "" }) => {
         />
 
         <div className="flex space-x-0 items-center text-black z-10">
-          <div className="relative mr-4 shrink-0 h-10 w-10">
+          <div className="relative flex items-center mr-4 shrink-0 h-10 w-10">
             <img
               src={bank?.images}
               alt="Bank logo"
               className={clsx(
-                "h-10 w-10 rounded-[10px] object-cover object-center bg-[rgb(var(--bg-color))]",
+                "h-6 w-6 rounded-[10px] object-cover object-center bg-[rgb(var(--bg-color))]",
                 "transition-all duration-300 group-hover:scale-110 group-hover:-rotate-3"
               )}
             />

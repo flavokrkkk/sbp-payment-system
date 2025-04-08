@@ -42,13 +42,13 @@ const ToggleDesc: FC<IToggleDesc> = ({
         )}
       >
         {isVisible && (
-          <section className="space-y-4 pt-2 animate-[slideDown_0.5s_ease-out]">
-            <div className="flex justify-center flex-col items-start space-y-2">
+          <section className="space-y-4 animate-[slideDown_0.5s_ease-out]">
+            <div className="flex justify-center flex-col items-start space-y-1">
               <div className="text-[14px] text-start flex items-center justify-center animate-[fadeIn_0.6s_ease-out]">
                 {payment?.description ?? descr}
               </div>
             </div>
-            <div className="flex justify-center flex-col items-start space-y-2">
+            <div className="flex justify-center flex-col items-start space-y-1">
               <h2 className="uppercase text-gray-mode-100 text-[14px] animate-[fadeIn_0.7s_ease-out]">
                 Номер заказа
               </h2>

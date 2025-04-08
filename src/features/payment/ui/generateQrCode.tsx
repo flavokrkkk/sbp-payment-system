@@ -1,3 +1,4 @@
+import { useResize } from "@/shared/hooks/useResize";
 import clsx from "clsx";
 import { QRCode } from "react-qrcode-logo";
 
@@ -10,6 +11,7 @@ const GenerateQrCode = ({
   isBg?: boolean;
   isBorder?: boolean;
 }) => {
+  const { isMobileView } = useResize();
   return (
     <div className="w-full flex justify-center">
       <section
@@ -28,7 +30,7 @@ const GenerateQrCode = ({
         <div className="p-3 bg-[#f0f4ff] rounded-t-xl">
           <QRCode
             value={paymentLink ?? ""}
-            size={300}
+            size={isMobileView ? 250 : 300}
             bgColor={"#F0F4FF"}
             fgColor={"#00103C"}
             removeQrCodeBehindLogo={true}

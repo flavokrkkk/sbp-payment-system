@@ -47,6 +47,9 @@ const CanvasSbpMethod: FC<ICanvasSbpMethod> = ({
       <div className="w-full h-full">
         <div className="px-5 space-y-5 pt-4">
           <section className="flex flex-col space-y-3">
+            <div className="flex justify-center">
+              <div className="border-b-4 rounded-lg w-[47px]" />
+            </div>
             <h2 className="text-center text-[20px] py-2 text-blue-mode-100 font-medium">
               Оплата через СБП
             </h2>

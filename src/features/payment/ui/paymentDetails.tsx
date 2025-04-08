@@ -48,11 +48,11 @@ const PaymentDetails = memo(() => {
             onVisibleQr={handlePanelIsVisibleQr}
             onVisibleSbp={handlePanelIsVisibleSbp}
           />
-          <p className="text-center w-[320px] text-gray-mode-100 text-[14px]">
+          <p className="text-center md:w-[320px] text-gray-mode-100 text-[11px] md:text-[14px]">
             Оплачивая покупку, вы соглашаетесь с{" "}
             <DownloadFile link={EAcceptFiles.ACCEPT_FILE}>
               <span className="border-b border-zinc-500 cursor-pointer">
-                публичной офертой
+                <br /> публичной офертой
               </span>
             </DownloadFile>
           </p>
