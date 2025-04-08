@@ -1,36 +1,33 @@
-import {
-  Canvas,
-  CanvasBackgrounds,
-  CanvasPositions,
-  CanvasScreenWidths,
-} from "@/shared/ui/canvas/canvas";
-import CheckCode from "../payment/ui/checkCode";
 import { FC } from "react";
-import { ChevronLeft } from "lucide-react";
+import Modal from "@/shared/ui/modal/modal";
+import GenerateQrCode from "../payment/ui/generateQrCode";
+import { useAppSelector } from "@/shared";
+import { paymentSelectors } from "@/entities/payment";
+import { useHyperLink } from "../payment/hooks/useHyperLink";
+import { X } from "lucide-react";
 
 interface ICanvasCode {
   isVisible: boolean;
   onVisible: () => void;
 }
 const CanvasCode: FC<ICanvasCode> = ({ isVisible, onVisible }) => {
+  const paymentParams = useAppSelector(paymentSelectors.paymentParams);
+  const { paymentLink } = useHyperLink(paymentParams);
+
   return (
-    <Canvas
-      isOpen={isVisible}
-      duration={1000}
-      canvasPosition={CanvasPositions.END}
-      onClose={onVisible}
-      canvasBg={CanvasBackgrounds.WHITE}
-      canvasScreenWidth={CanvasScreenWidths.MD}
-    >
-      <button
-        className="flex absolute z-40 items-center w-full space-x-2 cursor-pointer text-white bg-dark-800 px-5 pt-5 pb-5"
-        onClick={onVisible}
-      >
-        <ChevronLeft className="w-4 h-4" />
-        <span>Вернуться</span>
-      </button>
-      <CheckCode />
-    </Canvas>
+    <Modal isOpen={isVisible} onClose={onVisible}>
+      <section className="bg-[#F0F4FF] w-[350px] rounded-3xl py-3">
+        <GenerateQrCode isBorder={false} paymentLink={paymentLink} />
+      </section>
+      <div className="flex justify-center mt-4">
+        <button
+          className="bg-white w-12 h-12 rounded-full flex justify-center items-center "
+          onClick={onVisible}
+        >
+          <X />
+        </button>
+      </div>
+    </Modal>
   );
 };
 

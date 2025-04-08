@@ -6,6 +6,7 @@ export enum ButtonColors {
   BLACK,
   TRANSPARENT_BLACK,
   DODGER_BLUE,
+  BLUE_MODE,
   TIFFANY,
 }
 
@@ -52,12 +53,16 @@ export const ButtonColorClasses: Record<ButtonColors, IButtonClasses> = {
     activeClasses: "bg-white text-black",
     disableClasses: "bg-gray-300 text-gray-500",
   },
+  [ButtonColors.BLUE_MODE]: {
+    activeClasses: "bg-[#0E0737] text-white",
+    disableClasses: "bg-gray-300 text-gray-500",
+  },
   [ButtonColors.BLACK]: {
     activeClasses: "bg-dark-300 text-white",
     disableClasses: "bg-gray-300 text-gray-500",
   },
   [ButtonColors.TIFFANY]: {
-    activeClasses: "bg-[#10EADB] text-black",
+    activeClasses: "bg-[#30F1E4] text-black",
     disableClasses: "bg-gray-300 text-gray-500",
   },
   [ButtonColors.TRANSPARENT_BLACK]: {

@@ -7,6 +7,8 @@ import CodeePaySmallLogoOutlined from "../../../../../public/icons/codePaySmallL
 import SbpIconOutlined from "../../../../../public/icons/sbpIcon.svg";
 import BgTifanyOutlined from "../../../../../public/icons/Left-tiffany.svg";
 import BgPinkOutlined from "../../../../../public/icons/right-t&pink.svg";
+import CodePayLogo from "../../../../../public/icons/codePayLogo.svg";
+import ShopIcon from "../../../../../public/icons/shopIcon.svg";
 
 export const enum IconTypes {
   CODE_PAY_OUTLINED,
@@ -18,6 +20,8 @@ export const enum IconTypes {
   BG_TIFFANY_OUTLINED,
   BG_PINK_OUTLINED,
   CODE_PAY_FONT_OUTLINED,
+  CODE_PAY__OUTLINED,
+  SHOP_ICON,
 }
 
 export type IconDictionaryType = {
@@ -34,6 +38,8 @@ export const IconDictionary: Record<string, string> = {
   [IconTypes.BG_TIFFANY_OUTLINED]: BgTifanyOutlined,
   [IconTypes.BG_PINK_OUTLINED]: BgPinkOutlined,
   [IconTypes.CODE_PAY_FONT_OUTLINED]: CodePayFontOutlined,
+  [IconTypes.CODE_PAY__OUTLINED]: CodePayLogo,
+  [IconTypes.SHOP_ICON]: ShopIcon,
 };
 export const enum IconSizes {
   SMALL,

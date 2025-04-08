@@ -7,10 +7,8 @@ import {
   CanvasScreenWidths,
 } from "@/shared/ui/canvas/canvas";
 import { Input } from "@/shared/ui/input/input";
-import { ChevronLeft } from "lucide-react";
 import { ChangeEvent, FC, useCallback, useState } from "react";
 import BankList from "../payment/ui/bankList";
-import SbpBadge from "../badge/sbpBadge";
 import { IPaymentParam } from "@/entities/payment";
 
 interface ICanvasSbpMethod {
@@ -40,21 +38,17 @@ const CanvasSbpMethod: FC<ICanvasSbpMethod> = ({
     <Canvas
       isOpen={isVisible}
       duration={700}
-      canvasPosition={CanvasPositions.END}
+      canvasPosition={CanvasPositions.CENTER}
       onClose={onVisible}
       canvasBg={CanvasBackgrounds.WHITE}
       canvasScreenWidth={CanvasScreenWidths.MD}
     >
       <div className="w-full h-full">
-        <div className="p-5 space-y-5">
-          <button
-            className="flex items-center space-x-2 cursor-pointer text-white"
-            onClick={onVisible}
-          >
-            <ChevronLeft className="w-4 h-4" />
-            <span>Вернуться</span>
-          </button>
+        <div className="px-5 space-y-5 pt-4">
           <section className="flex flex-col space-y-3">
+            <h2 className="text-center text-[20px] py-2 text-blue-mode-100 font-medium">
+              Оплата через СБП
+            </h2>
             <Input
               placeholder="Название банка"
               value={search}

@@ -44,17 +44,16 @@ export const CanvasTransitionClasses: {
   [key in CanvasPositions]: { opened: string; closed: string };
 } = {
   [CanvasPositions.CENTER]: {
-    opened: "translate-y-0 h-screen duration-[400ms] w-full rounded-t-lg",
-    closed: "",
+    opened: "translate-y-0 h-screen w-full rounded-t-lg",
+    closed: "translate-y-full h-screen w-full rounded-t-lg",
   },
   [CanvasPositions.START]: {
-    opened: "translate-x-0  w-[295px] rounded-r-3xl",
-    closed: "-translate-x-full  ease-in-out w-[295px] rounded-r-3xl",
+    opened: "translate-x-0 w-[295px] rounded-r-3xl",
+    closed: "-translate-x-full w-[295px] rounded-r-3xl",
   },
   [CanvasPositions.END]: {
-    opened: "translate-x-0 duration-[400ms] w-[295px] rounded-r-3xl",
-    closed:
-      "translate-x-full duration-[400ms] ease-in-out w-[295px] rounded-r-3xl",
+    opened: "translate-x-0 w-[295px] rounded-r-3xl",
+    closed: "translate-x-full w-[295px] rounded-r-3xl",
   },
 };
 
@@ -79,7 +78,6 @@ interface ICanvas {
 export const Canvas: FC<ICanvas> = memo(
   ({
     isOpen,
-    duration,
     canvasBg = CanvasBackgrounds.VIOLET,
     canvasPosition = CanvasPositions.START,
     canvasScreenWidth = CanvasScreenWidths.XL,
@@ -101,31 +99,33 @@ export const Canvas: FC<ICanvas> = memo(
       <div
         ref={canvasRef}
         className={clsx(
-          "fixed inset-0 z-50 flex h-screen w-screen bg-shade-100",
+          "fixed inset-0 z-50 flex bg-shade-100/50 backdrop-blur-sm",
           CanvasPositionClasses[canvasPosition],
-          isOpen ? "pointer-events-auto " : "pointer-events-none opacity-0",
+          isOpen ? "pointer-events-auto" : "pointer-events-none",
           CanvasScreenWidthClasses[canvasScreenWidth]
         )}
+        style={{ opacity: isOpen ? 1 : 0 }}
         onClick={onClose}
       >
         <div
+          style={{
+            borderTopLeftRadius: "40px",
+            borderTopRightRadius: "40px",
+          }}
           className={clsx(
-            "relative w-full max-w-full mx-auto ",
+            "relative mx-auto flex flex-col",
             CanvasBackgroundClasses[canvasBg],
             CanvasTransitionClasses[canvasPosition][
               isOpen ? "opened" : "closed"
-            ]
+            ],
+            "max-h-[80vh] w-full",
+            "border"
           )}
-          style={{
-            transitionDuration: isOpen ? `700ms` : `${duration}ms`,
-          }}
           onClick={changeCanvasContent}
         >
-          <div
-            className="absolute top-4 right-4 p-4 text-violet-800"
-            onClick={onClose}
-          ></div>
-          <main className="flex-1 pb-4 overflow-y-auto ">{children}</main>
+          <main className="flex-1 overflow-y-auto">{children}</main>
+
+          <div className="flex-shrink-0 p-4 border-t border-shade-200"></div>
         </div>
       </div>,
       document.body

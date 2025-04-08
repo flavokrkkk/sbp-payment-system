@@ -10,6 +10,19 @@ export interface IPaymentParam {
   order_id: string;
 }
 
+export interface IPaymentParamSuccess {
+  cur?: string;
+  order_id?: string;
+  shop?: string;
+  shop_tag?: string;
+  amount?: string;
+  descr?: string;
+}
+
 export interface IPaymentStatusResponse {
-  status: boolean | null;
+  is_paid: null | false | true;
+  payment_details?: {
+    description: string;
+    amount: number;
+  };
 }

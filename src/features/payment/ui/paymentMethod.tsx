@@ -33,7 +33,9 @@ const PaymentMethod: FC<IPaymentMethod> = memo(
       <section className="space-y-4">
         {recentBank && (
           <>
-            <h2 className="mb-3">Вы ранее использовали</h2>
+            <h2 className="mb-3 text-[14px] text-gray-mode-100">
+              Вы ранее использовали
+            </h2>
             <BankCard
               bank={recentBank}
               paymentInfo={payment}

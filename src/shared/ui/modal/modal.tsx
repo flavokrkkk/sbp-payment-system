@@ -1,5 +1,6 @@
-import { FC } from "react";
+import { FC, useRef } from "react";
 import ReactDOM from "react-dom";
+import { useModalAnimate } from "@/shared/hooks/useAnimate";
 
 interface IModal {
   children: React.ReactNode;
@@ -8,28 +9,25 @@ interface IModal {
 }
 
 const Modal: FC<IModal> = ({ children, isOpen, onClose }) => {
-  const changeModalContent = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
-    event.stopPropagation();
-  };
+  const backdropRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  useModalAnimate({ isOpen, backdropRef, contentRef });
 
   if (!isOpen) return null;
 
   return ReactDOM.createPortal(
     <div
+      ref={backdropRef}
       onClick={onClose}
-      className={`top-0 left-0 z-50 fixed h-screen w-screen bg-[#00000066] flex items-center justify-center ${
-        isOpen
-          ? "opacity-100 pointer-events-auto"
-          : "opacity-0 pointer-events-none"
-      }`}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-[#00000066] backdrop-blur-sm opacity-0"
     >
       <div
-        className="bg-transparent absolute p-2 rounded-2xl"
-        onClick={changeModalContent}
+        ref={contentRef}
+        className="bg-transparent rounded-2xl max-w-[90vw] max-h-[90vh] overflow-auto opacity-0"
+        onClick={onClose}
       >
-        <div>{children}</div>
+        <div className="relative p-2">{children}</div>
       </div>
     </div>,
     document.body

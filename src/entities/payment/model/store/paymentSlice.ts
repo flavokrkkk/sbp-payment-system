@@ -5,11 +5,10 @@ import {
   PayloadAction,
 } from "@reduxjs/toolkit";
 import { IPaymentStore } from "./types";
-import { IPaymentParam, IPaymentStatusResponse } from "../../types/types";
+import { IPaymentParam } from "../../types/types";
 import { setPaymentInfo } from "../../libs/paymentInfoService";
 import { objectIsValid } from "@/shared/libs/utils/objectValid";
 import { banksList, IBank } from "@/shared/libs/mocks/banksList";
-import { getPaymentStatus } from "../../libs/paymentService";
 
 const initialState: IPaymentStore = {
   paymentParams: null,
@@ -19,6 +18,7 @@ const initialState: IPaymentStore = {
   isClose: false,
   isDanger: false,
   isSuccess: false,
+  isLoadingPolling: false,
 };
 
 const createSliceWithThunks = buildCreateSlice({
@@ -34,6 +34,7 @@ export const paymentSlice = createSliceWithThunks({
     banksList: (state) => state.banksList,
     isDanger: (state) => state.isDanger,
     isClose: (state) => state.isClose,
+    isLoadingPolling: (state) => state.isLoadingPolling,
     isSuccess: (state) => state.isSuccess,
   },
   reducers: (create) => ({
@@ -49,49 +50,19 @@ export const paymentSlice = createSliceWithThunks({
     updateStatus: create.reducer((state) => {
       state.isDanger = true;
     }),
-    validateStatusPayment: create.asyncThunk<
-      { data: IPaymentParam; status: IPaymentStatusResponse },
-      IPaymentParam,
-      { rejectValue: string }
-    >(
-      async (payload, { rejectWithValue, dispatch }) => {
+    setIsLoadingPolling: create.reducer(
+      (state, { payload }: PayloadAction<boolean>) => {
+        state.isLoadingPolling = payload;
+      }
+    ),
+    validateStatusPayment: create.reducer(
+      (state, { payload }: PayloadAction<IPaymentParam>) => {
         if (objectIsValid(payload)) {
-          try {
-            const response = await getPaymentStatus(payload.order_id);
-            return {
-              data: payload,
-              status: {
-                //отображаю статус запроса
-                status: response.data.status,
-              },
-            };
-          } catch (e) {
-            return rejectWithValue(String(e));
-          }
+          state.paymentParams = payload;
+          setPaymentInfo(payload);
         } else {
-          dispatch(paymentActions.updateStatus());
-          return rejectWithValue("No valid params");
+          state.isDanger = true;
         }
-      },
-      {
-        fulfilled: (state, { payload }) => {
-          if (payload.status.status === null) {
-            state.paymentParams = null;
-            state.isClose = true;
-          }
-          if (payload.status.status) {
-            state.isSuccess = true;
-            state.paymentParams = payload.data;
-            setPaymentInfo(payload.data);
-          }
-          if (!payload.status.status) {
-            state.paymentParams = payload.data;
-            setPaymentInfo(payload.data);
-          }
-        },
-        rejected: (state) => {
-          state.isClose = true;
-        },
       }
     ),
     searchBank: create.reducer((state, { payload }: PayloadAction<string>) => {
@@ -99,6 +70,11 @@ export const paymentSlice = createSliceWithThunks({
         bank.title.toLowerCase().includes(payload.toLowerCase())
       );
     }),
+    setDescriptionOnPaymentParam: create.reducer(
+      (state, { payload }: PayloadAction<string>) => {
+        state.paymentParams = { ...state.paymentParams!, description: payload };
+      }
+    ),
     setRecentBank: create.reducer(
       (state, { payload }: PayloadAction<IBank["id"]>) => {
         const searchBank = state.banksList.findIndex(

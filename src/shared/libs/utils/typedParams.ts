@@ -1,10 +1,17 @@
-import { PaymentParam } from "../types";
+import { PaymentParam, PaymentParamSuccess } from "../types";
 
 export const getSearchParam = (
   searchParam: URLSearchParams,
   key: PaymentParam
 ): string => {
   return searchParam.get(key) ?? "";
+};
+
+export const getSearchParamSuccess = (
+  searchParam: URLSearchParams,
+  key: PaymentParamSuccess
+): string => {
+  return decodeURIComponent(searchParam.get(key) ?? "");
 };
 
 export const paramsPayment: Array<PaymentParam> = [
@@ -16,4 +23,13 @@ export const paramsPayment: Array<PaymentParam> = [
   "shop_tag",
   "sum",
   "type",
+];
+
+export const paramsSuccessPayment: Array<PaymentParamSuccess> = [
+  "cur",
+  "order_id",
+  "shop",
+  "shop_tag",
+  "amount",
+  "descr",
 ];

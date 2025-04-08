@@ -5,6 +5,10 @@ import { memo, useCallback, useState } from "react";
 import PaymentMethod from "./paymentMethod";
 import { useAppSelector } from "@/shared";
 import { paymentSelectors } from "@/entities/payment";
+import ShopBadge from "@/features/badge/shopBadge";
+import Footer from "@/widgets/footer";
+import DownloadFile from "@/shared/ui/downloadFile/downloadFile";
+import { EAcceptFiles } from "@/shared/libs/utils/acceptFiles";
 
 const PaymentDetails = memo(() => {
   const [isVisiblePanelQr, setIsVisiblePanelQr] = useState(false);
@@ -29,16 +33,14 @@ const PaymentDetails = memo(() => {
           </span>
           <h1 className="text-[32px] font-bold ">Детали платежа</h1>
         </div>
-        <div className="flex justify-center w-full">
-          <h1 className="text-3xl text-center  border bg-[#E0E7FB] rounded-lg py-1 w-[225px]">
-            {payment?.shop}
-          </h1>
+        <div className="w-full flex items-center justify-center">
+          <ShopBadge shopName={payment?.shop ?? ""} />
         </div>
-        {/* <div className="bg-dark-200 sm:bg-transparent space-y-6 p-8 sm:p-0 rounded-2xl "> */}
         <PaymentInfoBadge payment={payment} />
-        {/* </div> */}
         <div className="sm:hidden space-y-5">
-          <h1 className="text-[20px] text-center">Выберите способ оплаты</h1>
+          <h1 className="text-[20px] text-center font-semibold text-blue-mode-100">
+            Выберите способ оплаты
+          </h1>
           <PaymentMethod
             isVisibleQr={isVisiblePanelQr}
             isVisibleSbp={isVisiblePanelSbp}
@@ -48,10 +50,16 @@ const PaymentDetails = memo(() => {
             onVisibleSbp={handlePanelIsVisibleSbp}
           />
           <p className="text-center w-[320px] text-gray-mode-100 text-[14px]">
-            Оплачивая покупку, вы соглашаетесь с публичной офертой
+            Оплачивая покупку, вы соглашаетесь с{" "}
+            <DownloadFile link={EAcceptFiles.ACCEPT_FILE}>
+              <span className="border-b border-zinc-500 cursor-pointer">
+                публичной офертой
+              </span>
+            </DownloadFile>
           </p>
         </div>
       </section>
+      <Footer />
     </div>
   );
 });

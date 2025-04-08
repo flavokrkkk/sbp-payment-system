@@ -16,3 +16,18 @@ export const useCalcSum = (payment: IPaymentParam | null) => {
     currentSumCalc,
   };
 };
+
+export const useCalcSumSuccess = (paymentSum: string) => {
+  const currentSumCalc = useMemo(() => {
+    if (paymentSum) {
+      const sum = new Decimal(paymentSum);
+
+      return sum.div(100).toNumber();
+    }
+    return 0;
+  }, [paymentSum]);
+
+  return {
+    currentSumCalc,
+  };
+};

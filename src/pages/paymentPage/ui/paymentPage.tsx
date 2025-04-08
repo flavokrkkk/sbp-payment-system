@@ -1,29 +1,26 @@
 import { paymentSelectors, usePayment } from "@/entities/payment";
 import CheckCode from "@/features/payment/ui/checkCode";
-import { useAppSelector } from "@/shared";
-import DangerPayment from "@/features/badge/dangerPayment";
-import ClosePayment from "@/features/badge/closePayment";
-import SuccessPayment from "@/features/badge/successPayment";
 import PaymentDetails from "@/features/payment/ui/paymentDetails";
+import PaymentPolling from "@/features/payment/ui/paymentPolling";
+import { useAppSelector } from "@/shared";
 
 const PaymentPage = () => {
-  const isDanger = useAppSelector(paymentSelectors.isDanger);
-  const isClose = useAppSelector(paymentSelectors.isClose);
-  const isSuccess = useAppSelector(paymentSelectors.isSuccess);
-
   usePayment();
-
-  if (isDanger) return <DangerPayment />;
-  if (isClose) return <ClosePayment />;
-  if (isSuccess) return <SuccessPayment />;
+  const paymentParams = useAppSelector(paymentSelectors.paymentParams);
+  const isLoadingPolling = useAppSelector(paymentSelectors.isLoadingPolling);
 
   return (
-    <div className="flex items-center h-screen  w-full justify-around">
-      <PaymentDetails />
-      <section className="w-full h-full hidden sm:block">
-        <CheckCode />
-      </section>
-    </div>
+    <>
+      {paymentParams?.order_id && <PaymentPolling />}
+      {isLoadingPolling && (
+        <div className="flex items-center h-screen flex-col  w-full justify-around">
+          <PaymentDetails />
+          <section className="w-full h-full hidden sm:block">
+            <CheckCode />
+          </section>
+        </div>
+      )}
+    </>
   );
 };
 
