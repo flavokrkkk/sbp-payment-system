@@ -6,7 +6,7 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: white; /* Установите цвет, если контейнер не покрывает всю страницу */
+  background-color: #f0f4ff;
   font-family: "SF Pro Display", sans-serif;
 }
 

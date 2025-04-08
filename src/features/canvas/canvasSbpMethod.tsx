@@ -55,11 +55,10 @@ const CanvasSbpMethod: FC<ICanvasSbpMethod> = ({
             <span>Вернуться</span>
           </button>
           <section className="flex flex-col space-y-3">
-            <SbpBadge isArrow={false} />
             <Input
-              placeholder="Поиск"
+              placeholder="Название банка"
               value={search}
-              className="text-white"
+              className="text-blue-mode bg-[#E0E7FB]"
               onChange={handleChangeSearch}
             />
           </section>

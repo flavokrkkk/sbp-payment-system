@@ -16,7 +16,7 @@ interface ISbpBadge {
 const SbpBadge: FC<ISbpBadge> = ({ onClick = () => {}, isArrow = true }) => (
   <div className="w-full">
     <Button
-      className="w-full flex justify-between"
+      className="w-full flex bg-[#0E0737] justify-between"
       rounded={ButtonRoundSizes.ROUNDED_2XL}
       size={ButtonSizes.MEDIUM}
       onClick={onClick}

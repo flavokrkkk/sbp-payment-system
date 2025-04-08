@@ -31,7 +31,7 @@ export const CanvasIconClasses: { [key in CanvasPositions]: JSX.Element } = {
 
 export const CanvasBackgroundClasses: { [key in CanvasBackgrounds]: string } = {
   [CanvasBackgrounds.VIOLET]: "bg-violet-200",
-  [CanvasBackgrounds.WHITE]: "bg-dark-200",
+  [CanvasBackgrounds.WHITE]: "bg-white",
 };
 
 export const CanvasPositionClasses: { [key in CanvasPositions]: string } = {

@@ -39,14 +39,14 @@ const BankCard: FC<IBankCard> = ({
   return (
     <Button
       className={clsx(
-        "w-full flex justify-between items-center",
+        "w-full flex justify-between border-2 border-[#CFDBFB] items-center",
         className && className
       )}
       rounded={ButtonRoundSizes.ROUNDED_2XL}
       size={ButtonSizes.SMALL}
       onClick={handleNavigateToPayment}
     >
-      <div className="flex space-x-0 items-center">
+      <div className="flex space-x-0 items-center  text-black">
         <img
           src={bank?.images}
           alt="Bank logo"
@@ -55,7 +55,7 @@ const BankCard: FC<IBankCard> = ({
         <span className="truncate max-w-[200px] text-sm">{bank?.title}</span>
       </div>
       <span>
-        <ChevronRight />
+        <ChevronRight className=" text-[#CFDBFB]" />
       </span>
     </Button>
   );

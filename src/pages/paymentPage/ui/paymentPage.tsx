@@ -18,7 +18,7 @@ const PaymentPage = () => {
   if (isSuccess) return <SuccessPayment />;
 
   return (
-    <div className="flex items-center h-full w-full justify-around">
+    <div className="flex items-center h-screen  w-full justify-around">
       <PaymentDetails />
       <section className="w-full h-full hidden sm:block">
         <CheckCode />

@@ -37,8 +37,8 @@ const PaymentDetails = memo(() => {
         {/* <div className="bg-dark-200 sm:bg-transparent space-y-6 p-8 sm:p-0 rounded-2xl "> */}
         <PaymentInfoBadge payment={payment} />
         {/* </div> */}
-        <div className="sm:hidden">
-          <h1 className="text-[20px] mb-5">Выберите способ оплаты</h1>
+        <div className="sm:hidden space-y-5">
+          <h1 className="text-[20px] text-center">Выберите способ оплаты</h1>
           <PaymentMethod
             isVisibleQr={isVisiblePanelQr}
             isVisibleSbp={isVisiblePanelSbp}
@@ -47,6 +47,9 @@ const PaymentDetails = memo(() => {
             onVisibleQr={handlePanelIsVisibleQr}
             onVisibleSbp={handlePanelIsVisibleSbp}
           />
+          <p className="text-center w-[320px] text-gray-mode-100 text-[14px]">
+            Оплачивая покупку, вы соглашаетесь с публичной офертой
+          </p>
         </div>
       </section>
     </div>
