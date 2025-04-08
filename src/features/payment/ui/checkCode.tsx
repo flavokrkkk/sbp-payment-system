@@ -5,7 +5,8 @@ import { Icon } from "@/shared/ui/icon/ui/icon";
 import { useMemo } from "react";
 import { QRCode } from "react-qrcode-logo";
 import { useCalcSum } from "../hooks/useCalcSum";
-import { RussianRubleIcon } from "lucide-react";
+import ToggleDesc from "./toggleDesc";
+import SumBadge from "./sumBadge";
 
 const CheckCode = () => {
   const payment = useAppSelector(paymentSelectors.paymentParams);
@@ -16,8 +17,8 @@ const CheckCode = () => {
   }, [payment]);
 
   return (
-    <div className="w-full h-screen flex justify-center text-black items-center">
-      <section className="flex relative  sm:w-[306px] flex-col items-center sm:items-start space-y-5 sm:space-y-10 ">
+    <div className="w-full h-screen flex justify-center text-black items-center lg:items-start lg:pt-10">
+      <section className="flex relative  sm:w-[306px] flex-col items-center sm:items-start space-y-5 sm:space-y-10">
         <div className="flex justify-center w-full">
           <h1 className="text-3xl text-center  border bg-[#E0E7FB] rounded-lg py-1 w-[225px]">
             {payment?.shop}
@@ -44,37 +45,47 @@ const CheckCode = () => {
               logoPadding={-5}
             />
             <div className="flex justify-center flex-col items-center">
-              <p className=" sm:text-[14px] text-center sm:text-center">
-                Для оплаты отсканируйте QR-код в мобильном приложении банка или
-                штатной камерой телефона
+              <p className="sm:text-[14px] text-center sm:text-center text-blue-mode-100">
+                Для оплаты отсканируйте QR-код в приложении банка или камерой
+                телефона
               </p>
             </div>
           </section>
         </div>
         <section className="w-full flex justify-center flex-col items-center space-y-5">
           <div className="flex flex-col items-center">
-            <h2 className="uppercase">Сумма к оплате</h2>
-            <div className="text-[40px] text-center flex items-center justify-center">
-              {currentSumCalc}
-              <RussianRubleIcon />
-            </div>
+            <h2 className="uppercase text-gray-mode-100 text-[14px]">
+              Сумма к оплате
+            </h2>
+            <SumBadge sum={currentSumCalc} />
           </div>
-          <div className="flex justify-center flex-col items-center space-y-2">
-            <h2 className="uppercase">Описание платежа</h2>
-            <div className="text-[14px] text-center flex items-center justify-center">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente
-              doloribus sequi dolores molestias incidunt consequatur alias, rem
-              voluptas aperiam perspiciatis enim
-            </div>
+          <div className="w-full hidden xl:block">
+            <ToggleDesc payment={payment} />
           </div>
-          <div className="flex justify-center flex-col items-center space-y-2">
-            <h2 className="uppercase">Номер заказа</h2>
-            <div className="text-[14px] text-center flex items-center justify-center">
-              {payment?.paymentId}
+          <section className="space-y-4 lg:hidden">
+            <div className="flex justify-center flex-col items-center space-y-2">
+              <h2 className="uppercase text-gray-mode-100 text-[14px]">
+                Описание платежа
+              </h2>
+              <div className="text-[14px] text-center flex items-center justify-center">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Sapiente doloribus sequi dolores molestias incidunt consequatur
+                alias, rem voluptas aperiam perspiciatis enim
+              </div>
             </div>
-          </div>
+            <div className="flex justify-center flex-col items-center space-y-2">
+              <h2 className="uppercase text-gray-mode-100 text-[14px]">
+                Номер заказа
+              </h2>
+              <div className="text-[14px] text-center flex items-center justify-center">
+                {payment?.paymentId}
+              </div>
+            </div>
+          </section>
+
           <p className=" text-center text-[14px]">
-            Оплачивая покупку, вы соглашаетесь с публичной офертой
+            Оплачивая покупку, вы соглашаетесь с{" "}
+            <span className="border-b border-zinc-500"> публичной офертой</span>
           </p>
         </section>
       </section>

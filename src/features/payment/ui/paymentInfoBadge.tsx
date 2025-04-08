@@ -5,6 +5,8 @@ import clsx from "clsx";
 import { CheckCircle, ChevronDown, ChevronUp, Copy } from "lucide-react";
 import { FC, useCallback, useState } from "react";
 import { useCalcSum } from "../hooks/useCalcSum";
+import { Button } from "@/shared/ui/button/button";
+import SumBadge from "./sumBadge";
 
 interface IPaymentInfoBadge {
   payment: IPaymentParam | null;
@@ -21,8 +23,19 @@ const PaymentInfoBadge: FC<IPaymentInfoBadge> = ({ payment }) => {
   );
 
   return (
-    <div className="flex flex-col space-y-3 relative">
-      <div className="flex space-x-10">
+    <div className="flex flex-col space-y-3 relative border p-3 rounded-lg border-dashed">
+      <section className="flex w-full justify-between">
+        <div>
+          <h2>Сумма к оплате</h2>
+          <SumBadge sum={currentSumCalc} align="start" />
+        </div>
+        <div>
+          <Button>
+            <ChevronUp />
+          </Button>
+        </div>
+      </section>
+      {/* <div className="flex space-x-10">
         <h2 className="text-base">Сумма</h2>{" "}
         <span>
           {currentSumCalc} {payment?.cur}
@@ -84,7 +97,7 @@ const PaymentInfoBadge: FC<IPaymentInfoBadge> = ({ payment }) => {
             </span>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

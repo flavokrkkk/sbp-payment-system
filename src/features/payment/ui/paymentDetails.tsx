@@ -29,13 +29,14 @@ const PaymentDetails = memo(() => {
           </span>
           <h1 className="text-[32px] font-bold ">Детали платежа</h1>
         </div>
-        <span className="flex justify-center sm:hidden">
-          <Icon type={IconTypes.CODE_PAY_OUTLINED} />
-        </span>
-        <div className="bg-dark-200 sm:bg-transparent space-y-6 p-8 sm:p-0 rounded-2xl ">
-          <h1 className="text-[32px] font-bold sm:hidden">Детали платежа</h1>
-          <PaymentInfoBadge payment={payment} />
+        <div className="flex justify-center w-full">
+          <h1 className="text-3xl text-center  border bg-[#E0E7FB] rounded-lg py-1 w-[225px]">
+            {payment?.shop}
+          </h1>
         </div>
+        {/* <div className="bg-dark-200 sm:bg-transparent space-y-6 p-8 sm:p-0 rounded-2xl "> */}
+        <PaymentInfoBadge payment={payment} />
+        {/* </div> */}
         <div className="sm:hidden">
           <h1 className="text-[20px] mb-5">Выберите способ оплаты</h1>
           <PaymentMethod

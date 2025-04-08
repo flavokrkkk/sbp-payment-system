@@ -14,6 +14,13 @@ export default {
           700: "#0C0D12",
           800: "#07080B",
         },
+
+        "blue-mode": {
+          100: "#00103C",
+        },
+        "gray-mode": {
+          100: "#78829E",
+        },
         "dark-blue": "rgba(31, 35, 47, 1)",
         "fluorescent-blue": "rgba(12, 179, 168, 1)",
       },
