@@ -28,7 +28,7 @@ export const routes = createBrowserRouter([
       },
       {
         element: <CartPage />,
-        path: "/cart-pay",
+        path: ERouteNames.PAYMENT_CARD_PAGE,
       },
     ],
   },

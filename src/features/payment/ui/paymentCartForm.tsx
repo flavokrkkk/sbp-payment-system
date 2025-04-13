@@ -7,6 +7,7 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Input } from "@/shared/ui/input/input";
 import CastomLabel from "@/widgets/castomLabel";
+import InputMask from "react-input-mask";
 import clsx from "clsx";
 import { useForm } from "react-hook-form";
 import {
@@ -95,14 +96,28 @@ const PaymentCartForm = () => {
               <FormItem className="w-full space-y-1">
                 <CastomLabel label="Номер карты" error={!!errors.cardNumber} />
                 <FormControl>
-                  <Input
+                  <InputMask
+                    mask="9999 9999 9999 9999"
+                    value={field.value}
+                    onChange={field.onChange}
+                    onBlur={field.onBlur}
+                    disabled={field.disabled}
                     placeholder="1234 4567 8901 2345"
                     className={clsx(
-                      "h-11",
-                      errors.cardNumber && "border border-red-600"
+                      "h-11 w-full border border-gray-300 rounded-md px-3",
+                      errors.cardNumber && "border-red-600"
                     )}
-                    {...field}
-                  />
+                  >
+                    {(inputProps) => (
+                      <Input
+                        {...inputProps}
+                        className={clsx(
+                          "h-11",
+                          errors.cardName && "border border-red-600"
+                        )}
+                      />
+                    )}
+                  </InputMask>
                 </FormControl>
                 <FormMessage className="text-xs font-light" />
               </FormItem>
@@ -117,14 +132,28 @@ const PaymentCartForm = () => {
                 <FormItem className="w-full space-y-1">
                   <CastomLabel label="ММ/ГГ" error={!!errors.expiryDate} />
                   <FormControl>
-                    <Input
-                      placeholder="12 / 34"
+                    <InputMask
+                      mask="99/99"
+                      value={field.value}
+                      onChange={field.onChange}
+                      onBlur={field.onBlur}
+                      disabled={field.disabled}
+                      placeholder="12/34"
                       className={clsx(
-                        "h-11",
-                        errors.expiryDate && "border border-red-600"
+                        "h-11 w-full border border-gray-300 rounded-md px-3",
+                        errors.expiryDate && "border-red-600"
                       )}
-                      {...field}
-                    />
+                    >
+                      {(inputProps) => (
+                        <Input
+                          {...inputProps}
+                          className={clsx(
+                            "h-11",
+                            errors.cardName && "border border-red-600"
+                          )}
+                        />
+                      )}
+                    </InputMask>
                   </FormControl>
                   <FormMessage className="text-xs font-light" />
                 </FormItem>
