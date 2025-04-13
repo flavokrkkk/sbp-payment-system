@@ -7,6 +7,7 @@ import { ERouteNames } from "@/shared";
 const PaymentPage = lazy(() => import("@pages/paymentPage"));
 const SuccessPage = lazy(() => import("@pages/successPage"));
 const ClosePage = lazy(() => import("@pages/closePage"));
+const CartPage = lazy(() => import("@pages/cartPage"));
 
 export const routes = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ export const routes = createBrowserRouter([
       {
         element: <ClosePage />,
         path: "/close-pay",
+      },
+      {
+        element: <CartPage />,
+        path: "/cart-pay",
       },
     ],
   },

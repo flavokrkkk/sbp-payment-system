@@ -11,15 +11,15 @@ const PaymentPage = () => {
 
   return (
     <>
-      {/* {paymentParams?.order_id && <PaymentPolling />} */}
-      {/* {isLoadingPolling && ( */}
-      <div className="flex items-center h-screen flex-col  w-full justify-around">
-        <PaymentDetails />
-        <section className="w-full h-full hidden sm:block">
-          <CheckCode />
-        </section>
-      </div>
-      {/* )} */}
+      {paymentParams?.order_id && <PaymentPolling />}
+      {isLoadingPolling && (
+        <div className="flex items-center h-screen flex-col  w-full justify-around">
+          <PaymentDetails />
+          <section className="w-full h-full hidden sm:block">
+            <CheckCode />
+          </section>
+        </div>
+      )}
     </>
   );
 };

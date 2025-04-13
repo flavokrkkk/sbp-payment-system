@@ -57,7 +57,7 @@ const CanvasSbpMethod: FC<ICanvasSbpMethod> = ({
               <Input
                 placeholder="Название банка"
                 value={search}
-                className="text-blue-mode bg-[#E0E7FB] pr-10"
+                className="text-blue-mode bg-[#E0E7FB] pr-10 h-[56px]"
                 onChange={handleChangeSearch}
               />
               <Search
