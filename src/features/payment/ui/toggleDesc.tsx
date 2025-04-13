@@ -1,12 +1,13 @@
-import { IPaymentParam } from "@/entities/payment";
+import { IPaymentStatusResponse, paymentSelectors } from "@/entities/payment";
 import OrderBadge from "@/features/badge/orderBadge";
+import { useAppSelector } from "@/shared";
 import clsx from "clsx";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { FC, useState } from "react";
 
 interface IToggleDesc {
   title?: string;
-  payment: (IPaymentParam & { description?: string }) | null;
+  payment: IPaymentStatusResponse["payment_details"] | null;
   descr?: string;
 }
 const ToggleDesc: FC<IToggleDesc> = ({
@@ -14,6 +15,7 @@ const ToggleDesc: FC<IToggleDesc> = ({
   title = "Описание платежа",
   descr = "Lorem ipsum dolor sit amet, consectetur adipisicing elit.Sapiente doloribus sequi dolores molestias incidunt consequatur",
 }) => {
+  const orderId = useAppSelector(paymentSelectors.orderId);
   const [isVisible, setIsVisible] = useState(false);
 
   const handleToggle = () => setIsVisible((p) => !p);
@@ -52,7 +54,7 @@ const ToggleDesc: FC<IToggleDesc> = ({
               <h2 className="uppercase text-gray-mode-100 text-[14px] animate-[fadeIn_0.7s_ease-out]">
                 Номер заказа
               </h2>
-              <OrderBadge orderId={payment?.order_id ?? ""} isPadding={false} />
+              <OrderBadge orderId={orderId ?? ""} isPadding={false} />
             </div>
           </section>
         )}

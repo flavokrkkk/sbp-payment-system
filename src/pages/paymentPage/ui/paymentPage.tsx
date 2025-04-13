@@ -1,4 +1,5 @@
-import { paymentSelectors, usePayment } from "@/entities/payment";
+import { paymentSelectors } from "@/entities/payment";
+import { usePayment } from "@/features/payment/hooks/usePayment";
 import CheckCode from "@/features/payment/ui/checkCode";
 import PaymentDetails from "@/features/payment/ui/paymentDetails";
 import PaymentPolling from "@/features/payment/ui/paymentPolling";
@@ -6,14 +7,14 @@ import { useAppSelector } from "@/shared";
 
 const PaymentPage = () => {
   usePayment();
-  const paymentParams = useAppSelector(paymentSelectors.paymentParams);
+  const orderId = useAppSelector(paymentSelectors.orderId);
   const isLoadingPolling = useAppSelector(paymentSelectors.isLoadingPolling);
 
   return (
     <>
-      {paymentParams?.order_id && <PaymentPolling />}
+      {orderId && <PaymentPolling />}
       {isLoadingPolling && (
-        <div className="flex items-center h-screen flex-col  w-full justify-around">
+        <div className="flex items-center h-screen flex-col w-full justify-around">
           <PaymentDetails />
           <section className="w-full h-full hidden sm:block">
             <CheckCode />

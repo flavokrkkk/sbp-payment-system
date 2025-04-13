@@ -16,7 +16,7 @@ export const PaymentCart = () => {
       <div className="container mx-auto px-4 pb-20 py-10 flex justify-center">
         <section className="flex relative w-full max-w-[360px] flex-col items-center sm:items-start space-y-5">
           <div className="w-full flex items-center justify-center">
-            <ShopBadge shopName={payment?.shop ?? ""} />
+            <ShopBadge shopName={payment?.shop_name ?? ""} />
           </div>
 
           <section className="w-full flex justify-center flex-col items-center space-y-6">
@@ -24,7 +24,7 @@ export const PaymentCart = () => {
               <h2 className="uppercase text-gray-mode-100 text-[14px]">
                 Сумма к оплате
               </h2>
-              <SumBadge sum={currentSumCalc} cur={payment?.cur ?? ""} />
+              <SumBadge sum={currentSumCalc} />
             </div>
 
             <div className="w-full">

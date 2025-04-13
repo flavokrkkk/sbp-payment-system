@@ -1,3 +1,4 @@
+import { getPaymentIp } from "@/entities/payment/libs/paymentService";
 import { CardFormData } from "@/pages/paymentPage/schemes/paymentCart.shcema";
 import { useEffect, useState } from "react";
 
@@ -34,11 +35,21 @@ export const usePaymentByCard = () => {
       const encryptedData = await checkout.encrypt(cardData);
       const deviceData = checkout.getDeviceData();
 
+      const userAgent = navigator.userAgent;
+
+      const browserAcceptHeader =
+        "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8";
+
+      const clientIp = await getPaymentIp();
+
       setError(null);
 
       return {
+        clientIp,
+        userAgent,
         deviceData,
         encryptedData,
+        browserAcceptHeader,
       };
     } catch {
       const errorMessage = "Ошибка при обработке платежа";

@@ -12,8 +12,8 @@ import { EAcceptFiles } from "@/shared/libs/utils/acceptFiles";
 const PaymentDetails = memo(() => {
   const [isVisiblePanelQr, setIsVisiblePanelQr] = useState(false);
   const [isVisiblePanelSbp, setIsVisiblePanelSbp] = useState(false);
-  const recentBank = useAppSelector(paymentSelectors.recentBank);
   const payment = useAppSelector(paymentSelectors.paymentParams);
+  const orderId = useAppSelector(paymentSelectors.orderId);
 
   const handlePanelIsVisibleQr = useCallback(() => {
     setIsVisiblePanelQr((currentState) => !currentState);
@@ -22,6 +22,8 @@ const PaymentDetails = memo(() => {
   const handlePanelIsVisibleSbp = useCallback(() => {
     setIsVisiblePanelSbp((currentState) => !currentState);
   }, []);
+
+  if (!orderId) return null;
 
   return (
     <div className="w-full min-h-screen sm:hidden flex justify-center sm:items-center">
@@ -33,9 +35,9 @@ const PaymentDetails = memo(() => {
           <h1 className="text-[32px] font-bold ">Детали платежа</h1>
         </div>
         <div className="w-full flex items-center justify-center">
-          <ShopBadge shopName={payment?.shop ?? ""} />
+          <ShopBadge shopName={payment?.shop_name ?? ""} />
         </div>
-        <PaymentInfoBadge payment={payment} />
+        <PaymentInfoBadge payment={payment} orderId={orderId} />
         <div className="sm:hidden space-y-5">
           <h1 className="text-[20px] text-center font-semibold text-blue-mode-100">
             Выберите способ оплаты
@@ -44,7 +46,6 @@ const PaymentDetails = memo(() => {
             isVisibleQr={isVisiblePanelQr}
             isVisibleSbp={isVisiblePanelSbp}
             payment={payment}
-            recentBank={recentBank}
             onVisibleQr={handlePanelIsVisibleQr}
             onVisibleSbp={handlePanelIsVisibleSbp}
           />

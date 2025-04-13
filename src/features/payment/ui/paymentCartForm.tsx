@@ -41,16 +41,29 @@ const PaymentCartForm = () => {
     handleSubmit,
   } = form;
 
-  const { handleEncryptedPayData } = usePaymentByCard();
+  const { error, handleEncryptedPayData } = usePaymentByCard();
 
   const onFormSubmit = async (values: CardFormData) => {
-    const { deviceData, encryptedData } = await handleEncryptedPayData(values);
-
+    const {
+      deviceData,
+      encryptedData,
+      browserAcceptHeader,
+      clientIp,
+      userAgent,
+    } = await handleEncryptedPayData(values);
     if (deviceData && encryptedData) {
-      console.log({ deviceData, encryptedData });
+      console.log({
+        deviceData,
+        encryptedData,
+        browserAcceptHeader,
+        clientIp,
+        userAgent,
+      });
       reset();
     }
   };
+
+  console.log(error);
 
   return (
     <Form {...form}>

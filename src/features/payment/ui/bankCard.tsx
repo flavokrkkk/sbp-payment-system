@@ -1,6 +1,4 @@
-import { IPaymentParam } from "@/entities/payment";
-import { setPaymentBank } from "@/entities/payment/libs/paymentInfoService";
-import { useAction } from "@/shared";
+import { IPaymentStatusResponse } from "@/entities/payment";
 import { IBank } from "@/shared/libs/mocks/banksList";
 import {
   Button,
@@ -8,26 +6,22 @@ import {
   ButtonSizes,
 } from "@/shared/ui/button/button";
 import clsx from "clsx";
-import { FC, useMemo } from "react";
+import { FC } from "react";
+import { useHyperBankLink } from "../hooks/useHyperLink";
 
 interface IBankCard {
   bank: IBank | null;
-  paymentInfo: IPaymentParam | null;
+  paymentInfo: IPaymentStatusResponse["payment_details"] | null;
   className?: string;
 }
 
 const BankCard: FC<IBankCard> = ({ bank, paymentInfo, className = "" }) => {
-  const { setRecentBank } = useAction();
-
-  const hyperLink = useMemo(() => {
-    return `${bank?.link}/${paymentInfo?.paymentId}?type=${paymentInfo?.type}&bank=${paymentInfo?.bank}&sum=${paymentInfo?.sum}&cur=${paymentInfo?.cur}&crc=${paymentInfo?.crc}`;
-  }, [paymentInfo]);
+  const { hyperLink } = useHyperBankLink({
+    bankLink: bank?.link ?? "",
+    nspk_url: paymentInfo?.nspk_url ?? "",
+  });
 
   const handleNavigateToPayment = () => {
-    if (bank?.id) {
-      setRecentBank(bank?.id);
-      setPaymentBank(bank?.id);
-    }
     window.open(hyperLink, "_self");
   };
 

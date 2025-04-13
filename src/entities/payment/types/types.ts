@@ -1,3 +1,4 @@
+//можно убрать после корректировок
 export interface IPaymentParam {
   type?: string;
   bank?: string;
@@ -19,9 +20,13 @@ export interface IPaymentParamSuccess {
 }
 
 export interface IPaymentStatusResponse {
-  is_paid: null | false | true;
+  payment_status: "paid" | "pending" | "undefined";
   payment_details?: {
     description: string;
     amount: number;
+    method: "card" | "sbp";
+    shop_name: string;
+    shop_url: string;
+    nspk_url?: string;
   };
 }

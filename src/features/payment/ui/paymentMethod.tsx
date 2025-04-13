@@ -2,15 +2,13 @@ import { FC, memo } from "react";
 import CanvasSbpMethod from "@/features/canvas/canvasSbpMethod";
 import CanvasCode from "@/features/canvas/canvasCode";
 import { useAppSelector } from "@/shared";
-import { IPaymentParam, paymentSelectors } from "@/entities/payment";
+import { IPaymentStatusResponse, paymentSelectors } from "@/entities/payment";
 import SbpBadge from "@/features/badge/sbpBadge";
 import CodeBadge from "@/features/badge/codeBadge";
-import { IBank } from "@/shared/libs/mocks/banksList";
 interface IPaymentMethod {
   isVisibleQr: boolean;
   isVisibleSbp: boolean;
-  payment: IPaymentParam | null;
-  recentBank: IBank | null;
+  payment: IPaymentStatusResponse["payment_details"] | null;
   onVisibleSbp: () => void;
   onVisibleQr: () => void;
 }

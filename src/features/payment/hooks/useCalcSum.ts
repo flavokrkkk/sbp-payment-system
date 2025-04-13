@@ -1,11 +1,13 @@
-import { IPaymentParam } from "@/entities/payment";
+import { IPaymentStatusResponse } from "@/entities/payment";
 import { useMemo } from "react";
 import Decimal from "decimal.js";
 
-export const useCalcSum = (payment: IPaymentParam | null) => {
+export const useCalcSum = (
+  payment: IPaymentStatusResponse["payment_details"] | null
+) => {
   const currentSumCalc = useMemo(() => {
-    if (payment?.sum) {
-      const sum = new Decimal(payment.sum);
+    if (payment?.amount) {
+      const sum = new Decimal(payment.amount);
 
       return sum.div(100).toNumber();
     }
@@ -17,7 +19,7 @@ export const useCalcSum = (payment: IPaymentParam | null) => {
   };
 };
 
-export const useCalcSumSuccess = (paymentSum: string) => {
+export const useCalcSumSuccess = (paymentSum: number) => {
   const currentSumCalc = useMemo(() => {
     if (paymentSum) {
       const sum = new Decimal(paymentSum);

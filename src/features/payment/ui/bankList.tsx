@@ -1,11 +1,11 @@
 import { IBank } from "@/shared/libs/mocks/banksList";
 import { FC } from "react";
 import BankCard from "./bankCard";
-import { IPaymentParam } from "@/entities/payment";
+import { IPaymentStatusResponse } from "@/entities/payment";
 
 interface IBankList {
   bankLists: Array<IBank>;
-  paymentInfo: IPaymentParam | null;
+  paymentInfo: IPaymentStatusResponse["payment_details"] | null;
 }
 
 const BankList: FC<IBankList> = ({ bankLists, paymentInfo }) => (

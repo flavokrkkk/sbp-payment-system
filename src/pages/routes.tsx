@@ -24,7 +24,7 @@ export const routes = createBrowserRouter([
       },
       {
         element: <ClosePage />,
-        path: "/close-pay",
+        path: ERouteNames.PAYMENT_CLOSE_PAGE,
       },
       {
         element: <CartPage />,

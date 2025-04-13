@@ -20,7 +20,7 @@ const CheckCode = () => {
       <div className="container mx-auto px-4 pb-20 py-10 flex justify-center">
         <section className="flex relative w-full max-w-[306px] flex-col items-center sm:items-start space-y-5 sm:space-y-10">
           <div className="w-full flex items-center justify-center">
-            <ShopBadge shopName={payment?.shop ?? ""} />
+            <ShopBadge shopName={payment?.shop_name ?? ""} />
           </div>
 
           <div className="mt-7 sm:hidden flex space-x-4">
@@ -35,7 +35,7 @@ const CheckCode = () => {
               <h2 className="uppercase text-gray-mode-100 text-[14px]">
                 Сумма к оплате
               </h2>
-              <SumBadge sum={currentSumCalc} cur={payment?.cur ?? ""} />
+              <SumBadge sum={currentSumCalc} />
             </div>
 
             <div className="w-full">

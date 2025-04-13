@@ -1,4 +1,4 @@
-import { IPaymentParam } from "@/entities/payment";
+import { IPaymentStatusResponse } from "@/entities/payment";
 import clsx from "clsx";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { FC, useCallback, useState } from "react";
@@ -8,10 +8,11 @@ import SumBadge from "./sumBadge";
 import OrderBadge from "@/features/badge/orderBadge";
 
 interface IPaymentInfoBadge {
-  payment: (IPaymentParam & { description?: string }) | null;
+  orderId: string;
+  payment: IPaymentStatusResponse["payment_details"] | null;
 }
 
-const PaymentInfoBadge: FC<IPaymentInfoBadge> = ({ payment }) => {
+const PaymentInfoBadge: FC<IPaymentInfoBadge> = ({ payment, orderId }) => {
   const [isActiveDetail, setIsActiveDetail] = useState(false);
   const { currentSumCalc } = useCalcSum(payment);
 
@@ -40,11 +41,7 @@ const PaymentInfoBadge: FC<IPaymentInfoBadge> = ({ payment }) => {
             <h2 className="uppercase text-gray-mode-100 text-[14px]">
               Сумма к оплате
             </h2>
-            <SumBadge
-              sum={currentSumCalc}
-              align="start"
-              cur={payment?.cur ?? ""}
-            />
+            <SumBadge sum={currentSumCalc} align="start" />
           </div>
           <div>
             <Button
@@ -80,7 +77,7 @@ const PaymentInfoBadge: FC<IPaymentInfoBadge> = ({ payment }) => {
                 <h2 className="uppercase text-gray-mode-100 text-[14px]">
                   Номер заказа
                 </h2>
-                <OrderBadge orderId={payment?.order_id ?? ""} />
+                <OrderBadge orderId={orderId} />
               </div>
             </div>
           )}

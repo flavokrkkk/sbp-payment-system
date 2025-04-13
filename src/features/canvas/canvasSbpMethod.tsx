@@ -9,12 +9,12 @@ import {
 import { Input } from "@/shared/ui/input/input";
 import { ChangeEvent, FC, useCallback, useState } from "react";
 import BankList from "../payment/ui/bankList";
-import { IPaymentParam } from "@/entities/payment";
 import { Search } from "lucide-react";
+import { IPaymentStatusResponse } from "@/entities/payment";
 
 interface ICanvasSbpMethod {
   bankLists: Array<IBank>;
-  paymentInfo: IPaymentParam | null;
+  paymentInfo: IPaymentStatusResponse["payment_details"] | null;
   isVisible: boolean;
   onVisible: () => void;
 }

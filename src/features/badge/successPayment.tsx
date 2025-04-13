@@ -5,26 +5,23 @@ import {
   ButtonColors,
   ButtonRoundSizes,
 } from "@/shared/ui/button/button";
-import { useAction } from "@/shared";
+import { useAction, useAppSelector } from "@/shared";
 import { useCalcSumSuccess } from "../payment/hooks/useCalcSum";
 import SumBadge from "../payment/ui/sumBadge";
 import ToggleDesc from "../payment/ui/toggleDesc";
 import ShopBadge from "./shopBadge";
 import DownloadFile from "@/shared/ui/downloadFile/downloadFile";
 import { EAcceptFiles } from "@/shared/libs/utils/acceptFiles";
-import { useDecodedSuccessParam } from "../payment/hooks/useDecodedSuccessParam";
-import { IPaymentParam } from "@/entities/payment";
+import { paymentSelectors } from "@/entities/payment";
 
 const SuccessPayment = () => {
-  const { paymentParamSuccess } = useDecodedSuccessParam();
+  const paymentParams = useAppSelector(paymentSelectors.paymentParams);
   const { clearPaymentInfo } = useAction();
-  const { currentSumCalc } = useCalcSumSuccess(
-    paymentParamSuccess?.amount ?? ""
-  );
+  const { currentSumCalc } = useCalcSumSuccess(paymentParams?.amount ?? 0);
 
   const handleClear = () => {
     clearPaymentInfo();
-    window.open(`https://t.me/${paymentParamSuccess?.shop_tag}`, "_self");
+    window.open(paymentParams?.shop_url, "_self");
   };
 
   return (
@@ -83,7 +80,7 @@ const SuccessPayment = () => {
       </div>
       <div className="animate-[fadeIn_1.4s_ease-out]">
         <ShopBadge
-          shopName={paymentParamSuccess?.shop ?? ""}
+          shopName={paymentParams?.shop_name ?? ""}
           isAnimate={false}
         />
       </div>
@@ -92,11 +89,7 @@ const SuccessPayment = () => {
       w-full sm:w-[348px] animate-[slideUp_1.6s_ease-out]"
       >
         <div className="w-full flex justify-start flex-col items-start space-y-6">
-          <ToggleDesc
-            payment={paymentParamSuccess as IPaymentParam}
-            descr={paymentParamSuccess?.descr}
-            title="Детали платежа"
-          />
+          <ToggleDesc payment={paymentParams} title="Детали платежа" />
           <div className="flex justify-center w-full animate-[fadeIn_1.8s_ease-out]">
             <Button
               className="p-2 w-full flex justify-center h-[50px] hover:scale-105 transition-transform duration-300"
