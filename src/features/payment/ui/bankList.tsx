@@ -9,7 +9,7 @@ interface IBankList {
 }
 
 const BankList: FC<IBankList> = ({ bankLists, paymentInfo }) => (
-  <section className="bg-white h-screen rounded-t-3xl px-5 pt-3 space-y-2 flex flex-col overflow-auto">
+  <section className="bg-[#F0F4FF] h-screen rounded-t-3xl px-4 pt-3 space-y-2 flex flex-col overflow-auto">
     {bankLists.map((bank) => (
       <BankCard key={bank.id} bank={bank} paymentInfo={paymentInfo} />
     ))}

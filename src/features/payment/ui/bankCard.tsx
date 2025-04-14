@@ -29,12 +29,12 @@ const BankCard: FC<IBankCard> = ({ bank, paymentInfo, className = "" }) => {
     <div className="relative group w-full ">
       <Button
         className={clsx(
-          "w-full flex justify-between border-2  h-[52px] border-[#CFDBFB] items-center bg-white/10",
+          "w-full flex justify-between border-2 h-[52px] border-[#CFDBFB] items-center bg-white/10",
           "relative overflow-hidden transition-all duration-300",
           "hover:shadow-md hover:border-[#A3BFFA]",
           className && className
         )}
-        rounded={ButtonRoundSizes.ROUNDED_2XL}
+        rounded={ButtonRoundSizes.ROUNDED_XL}
         size={ButtonSizes.SMALL}
         onClick={handleNavigateToPayment}
       >
@@ -43,7 +43,7 @@ const BankCard: FC<IBankCard> = ({ bank, paymentInfo, className = "" }) => {
       translate-x-[-100%] group-hover:animate-shine"
         />
 
-        <div className="flex space-x-0 items-center text-black z-10">
+        <div className="flex -space-x-5 items-center text-black z-10">
           <div className="relative flex items-center mr-4 shrink-0 h-10 w-10">
             <img
               src={bank?.images}

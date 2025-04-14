@@ -45,19 +45,19 @@ const CanvasSbpMethod: FC<ICanvasSbpMethod> = ({
       canvasScreenWidth={CanvasScreenWidths.MD}
     >
       <div className="w-full h-full">
-        <div className="px-5 space-y-5 pt-4">
+        <div className="px-4 space-y-5 pt-4">
           <section className="flex flex-col space-y-3">
             <div className="flex justify-center">
               <div className="border-b-4 rounded-lg w-[47px]" />
             </div>
-            <h2 className="text-center text-[20px] py-2 text-blue-mode-100 font-medium">
+            <h2 className="text-center text-[20px]  py-2 text-blue-mode-100 font-bold">
               Оплата через СБП
             </h2>
             <div className="relative">
               <Input
                 placeholder="Название банка"
                 value={search}
-                className="text-blue-mode bg-[#E0E7FB] pr-10 h-[56px]"
+                className="text-blue-mode bg-[#E0E7FB] pr-10 h-[56px] placeholder:text-[14px]"
                 onChange={handleChangeSearch}
               />
               <Search

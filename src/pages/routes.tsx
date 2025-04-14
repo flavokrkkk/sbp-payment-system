@@ -20,7 +20,7 @@ export const routes = createBrowserRouter([
       },
       {
         element: <SuccessPage />,
-        path: "/success-pay",
+        path: "/success_page",
       },
       {
         element: <ClosePage />,

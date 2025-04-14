@@ -10,11 +10,17 @@ import { useHyperLink } from "../hooks/useHyperLink";
 import ShopBadge from "@/features/badge/shopBadge";
 import DownloadFile from "@/shared/ui/downloadFile/downloadFile";
 import { EAcceptFiles } from "@/shared/libs/utils/acceptFiles";
+import { Loader } from "lucide-react";
 
 const CheckCode = () => {
   const payment = useAppSelector(paymentSelectors.paymentParams);
+  const orderId = useAppSelector(paymentSelectors.orderId);
+
   const { currentSumCalc } = useCalcSum(payment);
   const { paymentLink } = useHyperLink(payment);
+
+  if (!orderId) return <Loader className="animate-spin" />;
+
   return (
     <div className="w-full min-h-screen flex flex-col items-center h-full overflow-y-auto text-black relative">
       <div className="container mx-auto px-4 pb-20 py-10 flex justify-center">

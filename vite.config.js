@@ -2,6 +2,7 @@ import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 import path from "path";
 import svgr from "vite-plugin-svgr";
+import vitePluginBundleObfuscator from "vite-plugin-bundle-obfuscator";
 export default defineConfig({
     server: {
         host: true,
@@ -21,6 +22,27 @@ export default defineConfig({
                 titleProp: true,
             },
             include: ["lucide-react", "**/*.svg", "react-qrcode-logo"],
+        }),
+        vitePluginBundleObfuscator({
+            enable: true,
+            log: false,
+            autoExcludeNodeModules: true,
+            threadPool: true,
+            options: {
+                compact: true,
+                controlFlowFlattening: true,
+                identifierNamesGenerator: "hexadecimal",
+                deadCodeInjection: false,
+                debugProtection: false,
+                disableConsoleOutput: false,
+                selfDefending: true,
+                simplify: true,
+                stringArray: false,
+                stringArrayCallsTransform: false,
+                stringArrayEncoding: [],
+                stringArrayThreshold: 0.75,
+                unicodeEscapeSequence: false,
+            },
         }),
     ],
     resolve: {

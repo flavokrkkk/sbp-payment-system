@@ -14,13 +14,13 @@ export const banksList: Array<IBank> = [
   },
   {
     id: 2,
-    title: "Альфа банк",
+    title: "Альфа-Банк",
     link: "https://alfa-mobile.alfabank.ru/mobile-public/goto/qr",
     images: "https://qr.nspk.ru/proxyapp/logo/bank100000000008.png",
   },
   {
     id: 3,
-    title: "Т-банк",
+    title: "Т-Банк",
     link: "https://www.tinkoff.ru/mybank/payments/qr-pay",
     images: "https://qr.nspk.ru/proxyapp/logo/bank100000000004.png",
   },
@@ -39,13 +39,13 @@ export const banksList: Array<IBank> = [
 
   {
     id: 6,
-    title: "МТС банк",
+    title: "МТС-Банк",
     link: "bank100000000017://qr.nspk.ru/",
     images: "https://qr.nspk.ru/proxyapp/logo/bank100000000017.png",
   },
   {
     id: 7,
-    title: "Газпром банк",
+    title: "Газпром Банк",
     link: "https://sbpgpb.ru/c2bpayments",
     images: "https://qr.nspk.ru/proxyapp/logo/bank100000000001.png",
   },

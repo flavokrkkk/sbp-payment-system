@@ -22,7 +22,7 @@ const PaymentInfoBadge: FC<IPaymentInfoBadge> = ({ payment, orderId }) => {
   );
 
   return (
-    <div className="flex flex-col space-y-3 relative p-3 border-dashed border-2 rounded-2xl group">
+    <div className="flex w-full flex-col space-y-3 relative p-1 border-dashed border-2 rounded-2xl group">
       <div
         className="rounded-xl p-3"
         style={{

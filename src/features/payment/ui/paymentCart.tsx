@@ -7,10 +7,16 @@ import { useAppSelector } from "@/shared";
 import { EAcceptFiles } from "@/shared/libs/utils/acceptFiles";
 import PaymentCartForm from "./paymentCartForm";
 import DownloadFile from "@/shared/ui/downloadFile/downloadFile";
+import PaymentInfoBadge from "./paymentInfoBadge";
+import { Loader } from "lucide-react";
 
 export const PaymentCart = () => {
   const payment = useAppSelector(paymentSelectors.paymentParams);
+  const orderId = useAppSelector(paymentSelectors.orderId);
+
   const { currentSumCalc } = useCalcSum(payment);
+
+  if (!orderId) return <Loader className="animate-spin" />;
   return (
     <div className="w-full min-h-screen flex flex-col items-center h-full overflow-y-auto text-black relative">
       <div className="container mx-auto px-4 pb-20 py-10 flex justify-center">
@@ -19,20 +25,22 @@ export const PaymentCart = () => {
             <ShopBadge shopName={payment?.shop_name ?? ""} />
           </div>
 
-          <section className="w-full flex justify-center flex-col items-center space-y-6">
-            <div className="flex flex-col items-center">
+          <section className="w-full flex justify-center flex-col items-center md:space-y-6">
+            <div className="flex-col items-center hidden md:flex">
               <h2 className="uppercase text-gray-mode-100 text-[14px]">
                 Сумма к оплате
               </h2>
               <SumBadge sum={currentSumCalc} />
             </div>
-
-            <div className="w-full">
+            <div className="block w-full md:hidden">
+              <PaymentInfoBadge payment={payment} orderId={orderId} />
+            </div>
+            <div className="w-full hidden md:block">
               <ToggleDesc payment={payment} title="Детали платежа" />
             </div>
             <PaymentCartForm />
 
-            <p className="text-center text-gray-mode-100 text-[14px] max-w-[306px] ">
+            <p className="text-center pt-6 md:pt-0 text-gray-mode-100 text-[14px] max-w-[306px] ">
               Оплачивая покупку, вы соглашаетесь с{" "}
               <DownloadFile link={EAcceptFiles.ACCEPT_FILE}>
                 <span className="border-b border-zinc-500 cursor-pointer">

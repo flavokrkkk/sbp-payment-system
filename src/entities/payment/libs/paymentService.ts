@@ -1,6 +1,10 @@
 import { axiosNoAuth } from "@/shared/api/baseQuery";
 import { AxiosResponse } from "axios";
-import { IPaymentStatusResponse } from "../types";
+import {
+  IPaymentCardProvide,
+  IPaymentCardProvideResponse,
+  IPaymentStatusResponse,
+} from "../types";
 import { EPaymentEndpoints } from "./utils/endpoints";
 
 class PaymentService {
@@ -25,6 +29,19 @@ class PaymentService {
       return null;
     }
   }
+
+  public async getPaymentProvideCard(
+    requestBody: IPaymentCardProvide
+  ): Promise<IPaymentCardProvideResponse> {
+    const { data } = await axiosNoAuth.post<IPaymentCardProvideResponse>(
+      EPaymentEndpoints.PAY_PROVIDE,
+      {
+        ...requestBody,
+      }
+    );
+    return data;
+  }
 }
 
-export const { getPaymentStatus, getPaymentIp } = new PaymentService();
+export const { getPaymentStatus, getPaymentIp, getPaymentProvideCard } =
+  new PaymentService();

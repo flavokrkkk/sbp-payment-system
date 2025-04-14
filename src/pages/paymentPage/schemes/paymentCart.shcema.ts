@@ -6,7 +6,11 @@ export const cardSchema = z.object({
     .min(1, "Поле обязательно")
     .min(2, "Имя должно содержать минимум 2 символа")
     .max(50, "Имя слишком длинное")
-    .regex(/^[A-Z\s]+$/, "Имя должно содержать только заглавные буквы"),
+    .regex(
+      /^[A-Z\s]+$/,
+      "Имя должно содержать только заглавные латинские буквы"
+    )
+    .refine((val) => !/[а-яА-ЯЁё]/.test(val), "Русские буквы запрещены"),
 
   cardNumber: z
     .string()
@@ -26,9 +30,9 @@ export const cardSchema = z.object({
 
       const currentYear = new Date().getFullYear() % 100;
       const currentMonth = new Date().getMonth() + 1;
-
       if (year < currentYear) return false;
       if (year === currentYear && month < currentMonth) return false;
+      if (year - currentYear > 20) return false;
 
       return true;
     }, "Срок действия карты истек или неверен"),

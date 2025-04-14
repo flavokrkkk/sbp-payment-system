@@ -31,7 +31,7 @@ export const CanvasIconClasses: { [key in CanvasPositions]: JSX.Element } = {
 
 export const CanvasBackgroundClasses: { [key in CanvasBackgrounds]: string } = {
   [CanvasBackgrounds.VIOLET]: "bg-violet-200",
-  [CanvasBackgrounds.WHITE]: "bg-white",
+  [CanvasBackgrounds.WHITE]: "bg-[#F0F4FF]",
 };
 
 export const CanvasPositionClasses: { [key in CanvasPositions]: string } = {
@@ -99,7 +99,7 @@ export const Canvas: FC<ICanvas> = memo(
       <div
         ref={canvasRef}
         className={clsx(
-          "fixed inset-0 z-50 flex bg-shade-100/50 backdrop-blur-sm",
+          "fixed inset-0 z-50 flex bg-[#8F8AA759]",
           CanvasPositionClasses[canvasPosition],
           isOpen ? "pointer-events-auto" : "pointer-events-none",
           CanvasScreenWidthClasses[canvasScreenWidth]
@@ -123,9 +123,9 @@ export const Canvas: FC<ICanvas> = memo(
           )}
           onClick={changeCanvasContent}
         >
-          <main className="flex-1 overflow-y-auto">{children}</main>
+          <main className="flex-1 overflow-hidden">{children}</main>
 
-          <div className="flex-shrink-0 p-4 border-t border-shade-200"></div>
+          <div className="flex-shrink-0 p-0 border-t border-shade-200"></div>
         </div>
       </div>,
       document.body

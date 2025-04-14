@@ -22,8 +22,14 @@ import {
   FormMessage,
 } from "@/shared/ui/form/form";
 import { usePaymentByCard } from "../hooks/usePaymentByCard";
+import { useAppSelector } from "@/shared";
+import { paymentSelectors } from "@/entities/payment";
+import { useState } from "react";
+import { Loader2 } from "lucide-react";
 
 const PaymentCartForm = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const orderId = useAppSelector(paymentSelectors.orderId);
   const form = useForm<CardFormData>({
     resolver: zodResolver(cardSchema),
     defaultValues: {
@@ -38,43 +44,57 @@ const PaymentCartForm = () => {
     control,
     formState: { errors },
     reset,
+    setError: setValidateError,
     handleSubmit,
   } = form;
 
-  const { error, handleEncryptedPayData } = usePaymentByCard();
+  const { setError, handleEncryptedPayData, handlePaymentCard } =
+    usePaymentByCard({ setValidateError });
 
   const onFormSubmit = async (values: CardFormData) => {
-    const {
-      deviceData,
-      encryptedData,
-      browserAcceptHeader,
-      clientIp,
-      userAgent,
-    } = await handleEncryptedPayData(values);
-    if (deviceData && encryptedData) {
-      console.log({
+    try {
+      const {
         deviceData,
         encryptedData,
         browserAcceptHeader,
         clientIp,
         userAgent,
+      } = await handleEncryptedPayData(values);
+
+      setIsLoading(true);
+
+      if (!deviceData || !encryptedData || !orderId || !clientIp) {
+        return;
+      }
+
+      const paymentData = await handlePaymentCard({
+        orderId,
+        browserAcceptHeader,
+        clientIp,
+        deviceData: deviceData as Record<string, string>,
+        encryptedData,
+        userAgent,
       });
       reset();
+      return paymentData;
+    } catch (e) {
+      console.error("Ошибка при обработке платежа:", e);
+      setError("Произошла ошибка. Попробуйте снова.");
+    } finally {
+      setIsLoading(false);
     }
   };
-
-  console.log(error);
-
+  console.log(errors);
   return (
     <Form {...form}>
       <form
         className={clsx(
-          "rounded-3xl w-full flex justify-center items-center flex-col space-y-6"
+          "rounded-3xl w-full flex justify-center items-center flex-col space-y-3 md:space-y-6"
         )}
         onSubmit={handleSubmit(onFormSubmit)}
       >
         <section
-          className="border-2 border-dashed border-[#CFDBFB] p-5 flex flex-col space-y-5"
+          className="md:border-2 border-dashed border-[#CFDBFB]  py-4 md:py-5 md:p-5 flex flex-col space-y-5"
           style={{
             position: "relative",
             borderRadius: "30px",
@@ -83,26 +103,58 @@ const PaymentCartForm = () => {
         >
           <FormField
             control={control}
+            disabled={isLoading}
             name="cardName"
-            render={({ field }) => (
-              <FormItem className="w-full space-y-1">
-                <CastomLabel label="Имя на карте" error={!!errors.cardName} />
-                <FormControl>
-                  <Input
-                    placeholder="IVAN IVANOV"
-                    className={clsx(
-                      "h-11",
-                      errors.cardName && "border border-red-600"
-                    )}
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage className="text-xs font-light" />
-              </FormItem>
-            )}
+            render={({ field }) => {
+              const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+                const value = e.target.value.toUpperCase();
+                field.onChange(value);
+              };
+
+              const handleKeyDown = (
+                e: React.KeyboardEvent<HTMLInputElement>
+              ) => {
+                if (/[а-яА-ЯЁё]/.test(e.key)) {
+                  e.preventDefault();
+                }
+              };
+
+              const handlePaste = (
+                e: React.ClipboardEvent<HTMLInputElement>
+              ) => {
+                const pastedText = e.clipboardData.getData("text");
+                if (/[а-яА-ЯЁё]/.test(pastedText)) {
+                  e.preventDefault();
+                }
+              };
+
+              return (
+                <FormItem className="w-full space-y-1">
+                  <CastomLabel label="Имя на карте" error={!!errors.cardName} />
+                  <FormControl>
+                    <Input
+                      placeholder="IVAN IVANOV"
+                      className={clsx(
+                        "h-11 uppercase",
+                        errors.cardName && "border border-red-600"
+                      )}
+                      value={field.value}
+                      onBlur={field.onBlur}
+                      name={field.name}
+                      ref={field.ref}
+                      onChange={handleChange}
+                      onKeyDown={handleKeyDown}
+                      onPaste={handlePaste}
+                    />
+                  </FormControl>
+                  <FormMessage className="text-xs font-light" />
+                </FormItem>
+              );
+            }}
           />
 
           <FormField
+            disabled={isLoading}
             control={control}
             name="cardNumber"
             render={({ field }) => (
@@ -126,7 +178,7 @@ const PaymentCartForm = () => {
                         {...inputProps}
                         className={clsx(
                           "h-11",
-                          errors.cardName && "border border-red-600"
+                          errors.cardNumber && "border border-red-600"
                         )}
                       />
                     )}
@@ -139,6 +191,7 @@ const PaymentCartForm = () => {
 
           <div className="w-full flex space-x-3">
             <FormField
+              disabled={isLoading}
               control={control}
               name="expiryDate"
               render={({ field }) => (
@@ -162,7 +215,7 @@ const PaymentCartForm = () => {
                           {...inputProps}
                           className={clsx(
                             "h-11",
-                            errors.cardName && "border border-red-600"
+                            errors.expiryDate && "border border-red-600"
                           )}
                         />
                       )}
@@ -174,6 +227,7 @@ const PaymentCartForm = () => {
             />
 
             <FormField
+              disabled={isLoading}
               control={control}
               name="cvv"
               render={({ field }) => (
@@ -195,15 +249,20 @@ const PaymentCartForm = () => {
             />
           </div>
         </section>
-
+        {errors.root && (
+          <p className="text-red-600 text-sm text-center mt-2">
+            {errors.root.message}
+          </p>
+        )}
         <section className="w-full px-2">
           <Button
+            isDisabled={isLoading}
             type={ButtonTypes.SUBMIT}
-            className={"w-full flex justify-center"}
+            className={clsx("w-full flex justify-center")}
             rounded={ButtonRoundSizes.ROUNDED_2XL}
             bgColor={ButtonColors.TIFFANY}
           >
-            Оплатить
+            {isLoading ? <Loader2 className="animate-spin" /> : "Оплатить"}
           </Button>
         </section>
       </form>

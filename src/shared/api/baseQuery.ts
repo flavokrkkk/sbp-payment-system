@@ -40,6 +40,23 @@ export class AxiosClient {
       this.handleError(error as AxiosError<{ message?: string }>);
     }
   }
+
+  public async post<T>(
+    url: string,
+    data?: Record<string, unknown>,
+    config?: AxiosRequestConfig
+  ): Promise<AxiosResponse<T>> {
+    try {
+      const response = await this.baseQueryV1Instance.post<T>(
+        url,
+        data,
+        config
+      );
+      return this.handleResponse(response);
+    } catch (error) {
+      this.handleError(error as AxiosError<{ message?: string }>);
+    }
+  }
 }
 
 export const axiosNoAuth = new AxiosClient(

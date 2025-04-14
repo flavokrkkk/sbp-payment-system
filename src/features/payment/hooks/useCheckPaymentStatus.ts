@@ -21,7 +21,7 @@ export const useCheckPaymentStatus = () => {
       }
 
       if (data.payment_status === "pending") {
-        navigate(`${ERouteNames.PAYMENT_PAGE}?order_id=${orderId}`);
+        navigate(ERouteNames.PAYMENT_CLOSE_PAGE);
       }
     }
   };

@@ -30,3 +30,25 @@ export interface IPaymentStatusResponse {
     nspk_url?: string;
   };
 }
+
+export interface IPaymentCardProvide {
+  order_id: string;
+  cardCrypto: string;
+  deviceData: unknown;
+  ip: string;
+}
+
+export interface IPaymentCardProvideResponse {
+  transactionId: string;
+  transactionStatus: "Pending" | "Paid" | "Declined";
+  threeDsData: {
+    url: string;
+    method: "POST";
+    parameters: {
+      creq: string;
+      threeDSSessionData: string;
+    };
+  };
+  errorCode?: string;
+  errorMessage?: string;
+}

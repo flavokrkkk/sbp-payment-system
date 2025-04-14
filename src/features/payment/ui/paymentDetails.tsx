@@ -8,6 +8,7 @@ import { paymentSelectors } from "@/entities/payment";
 import ShopBadge from "@/features/badge/shopBadge";
 import DownloadFile from "@/shared/ui/downloadFile/downloadFile";
 import { EAcceptFiles } from "@/shared/libs/utils/acceptFiles";
+import { Loader } from "lucide-react";
 
 const PaymentDetails = memo(() => {
   const [isVisiblePanelQr, setIsVisiblePanelQr] = useState(false);
@@ -23,7 +24,7 @@ const PaymentDetails = memo(() => {
     setIsVisiblePanelSbp((currentState) => !currentState);
   }, []);
 
-  if (!orderId) return null;
+  if (!orderId) return <Loader className="animate-spin" />;
 
   return (
     <div className="w-full min-h-screen sm:hidden flex justify-center sm:items-center">

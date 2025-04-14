@@ -13,9 +13,12 @@ import ShopBadge from "./shopBadge";
 import DownloadFile from "@/shared/ui/downloadFile/downloadFile";
 import { EAcceptFiles } from "@/shared/libs/utils/acceptFiles";
 import { paymentSelectors } from "@/entities/payment";
+import { Loader } from "lucide-react";
 
 const SuccessPayment = () => {
   const paymentParams = useAppSelector(paymentSelectors.paymentParams);
+  const orderId = useAppSelector(paymentSelectors.orderId);
+
   const { clearPaymentInfo } = useAction();
   const { currentSumCalc } = useCalcSumSuccess(paymentParams?.amount ?? 0);
 
@@ -23,6 +26,8 @@ const SuccessPayment = () => {
     clearPaymentInfo();
     window.open(paymentParams?.shop_url, "_self");
   };
+
+  if (!orderId) return <Loader className="animate-spin" />;
 
   return (
     <section className="flex flex-col p-3 sm:p-0 items-center justify-center h-screen space-y-6 animate-[fadeIn_0.8s_ease-out]">
