@@ -8,4 +8,5 @@ export interface IPaymentStore {
   recentBank: IBank | null;
   isLoadingPolling: boolean;
   orderId: string | null;
+  paymentSuccessStatus: "paid" | "pending" | "undefined" | null;
 }

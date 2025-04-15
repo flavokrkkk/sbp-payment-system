@@ -40,7 +40,6 @@ export function usePolling<T>({
       setError(err as Error);
       if (onError) {
         onError(err as Error);
-        setShouldPoll(false);
       }
     } finally {
       setIsLoading(false);

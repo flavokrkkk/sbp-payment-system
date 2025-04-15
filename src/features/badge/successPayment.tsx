@@ -27,7 +27,17 @@ const SuccessPayment = () => {
     window.open(paymentParams?.shop_url, "_self");
   };
 
-  if (!orderId) return <Loader className="animate-spin" />;
+  const paymentSuccessStatus = useAppSelector(
+    paymentSelectors.paymentSuccessStatus
+  );
+
+  if (paymentSuccessStatus !== "paid" || !orderId) {
+    return (
+      <div className="h-full w-full flex justify-center items-center">
+        <Loader className="animate-spin" />;
+      </div>
+    );
+  }
 
   return (
     <section className="flex flex-col p-3 sm:p-0 items-center justify-center h-screen space-y-6 animate-[fadeIn_0.8s_ease-out]">

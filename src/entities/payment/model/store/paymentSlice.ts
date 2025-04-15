@@ -16,6 +16,7 @@ const initialState: IPaymentStore = {
   recentBank: null,
   isLoadingPolling: false,
   orderId: null,
+  paymentSuccessStatus: null,
 };
 
 const createSliceWithThunks = buildCreateSlice({
@@ -31,6 +32,7 @@ export const paymentSlice = createSliceWithThunks({
     banksList: (state) => state.banksList,
     isLoadingPolling: (state) => state.isLoadingPolling,
     orderId: (state) => state.orderId,
+    paymentSuccessStatus: (state) => state.paymentSuccessStatus,
   },
   reducers: (create) => ({
     setPaymentOrderId: create.reducer(
@@ -58,6 +60,15 @@ export const paymentSlice = createSliceWithThunks({
         { payload }: PayloadAction<IPaymentStatusResponse["payment_details"]>
       ) => {
         state.paymentParams = payload;
+      }
+    ),
+
+    setSuccessPaymentStatus: create.reducer(
+      (
+        state,
+        { payload }: PayloadAction<"paid" | "pending" | "undefined" | null>
+      ) => {
+        state.paymentSuccessStatus = payload;
       }
     ),
   }),
