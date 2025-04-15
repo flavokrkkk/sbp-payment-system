@@ -34,7 +34,7 @@ const SuccessPayment = () => {
   if (paymentSuccessStatus !== "paid" || !orderId) {
     return (
       <div className="h-full w-full flex justify-center items-center">
-        <Loader className="animate-spin" />;
+        <Loader className="animate-spin text-[#30F1E4]" />
       </div>
     );
   }
