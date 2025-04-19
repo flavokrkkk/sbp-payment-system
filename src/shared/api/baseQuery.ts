@@ -60,5 +60,7 @@ export class AxiosClient {
 }
 
 export const axiosNoAuth = new AxiosClient(
-  import.meta.env.VITE_BASE_SERVER_URL
+  import.meta.env.VITE_DEV_MODE
+    ? import.meta.env.VITE_BASE_SERVER_DEV_URL
+    : import.meta.env.VITE_BASE_SERVER_URL
 );

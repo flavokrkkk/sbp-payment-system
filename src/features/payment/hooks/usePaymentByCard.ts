@@ -82,7 +82,7 @@ export const usePaymentByCard = ({
         clientIp,
         userAgent,
         deviceData,
-        encryptedData,
+        encryptedData: encryptedData as unknown as { encryptedString: string },
         browserAcceptHeader,
       };
     } catch {
@@ -101,7 +101,7 @@ export const usePaymentByCard = ({
     userAgent,
   }: {
     orderId: string;
-    encryptedData: string;
+    encryptedData: { encryptedString: string };
     deviceData: Record<string, string>;
     browserAcceptHeader: string;
     userAgent: string;
@@ -115,7 +115,7 @@ export const usePaymentByCard = ({
       }
       const paymentData = await getPaymentProvideCard({
         order_id: orderId,
-        cardCrypto: encryptedData,
+        cardCrypto: encryptedData.encryptedString,
         deviceData: {
           ...deviceData,
           browserAcceptHeader,

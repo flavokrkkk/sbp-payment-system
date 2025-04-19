@@ -29,7 +29,7 @@ const ShopBadge = ({
         )}
       />
       <h1
-        className="text-[18px] text-center text-blue-mode-100 font-medium 
+        className="text-[18px] text-center text-blue-mode-100 uppercase font-medium 
       animate-[textGlow_3s_infinite_ease-in-out] z-10"
       >
         {shopName}

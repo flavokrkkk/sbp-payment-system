@@ -2,7 +2,7 @@ import { IPaymentStatusResponse, paymentSelectors } from "@/entities/payment";
 import { EPaymentEndpoints } from "@/entities/payment/libs/utils/endpoints";
 import { useAction, useAppSelector } from "@/shared";
 import { usePolling } from "@/shared/hooks/usePolling";
-import { EBaseUrl } from "@/shared/libs/utils/baseUrl";
+import { EBaseDevUrl, EBaseUrl } from "@/shared/libs/utils/baseUrl";
 
 const PaymentSuccessPolling = () => {
   const orderId = useAppSelector(paymentSelectors.orderId);
@@ -10,8 +10,10 @@ const PaymentSuccessPolling = () => {
     useAction();
 
   usePolling<IPaymentStatusResponse>({
-    url: `${EBaseUrl.BASE_QUERY_URL}${EPaymentEndpoints.PAY_STATUS}?order_id=${orderId}`,
-    interval: 3000,
+    url: import.meta.env.VITE_DEV_MODE
+      ? `${EBaseUrl.BASE_QUERY_URL}${EPaymentEndpoints.PAY_STATUS}?order_id=${orderId}`
+      : `${EBaseDevUrl.BASE_QUERY_URL}${EPaymentEndpoints.PAY_STATUS}?order_id=${orderId}`,
+    interval: 5000,
     onSuccess: (data) => {
       if (data.payment_status === "paid") {
         setPaymentDetails(data.payment_details);

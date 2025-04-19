@@ -2,7 +2,6 @@ import { IPaymentStatusResponse } from "@/entities/payment";
 import clsx from "clsx";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { FC, useCallback, useState } from "react";
-import { useCalcSum } from "../hooks/useCalcSum";
 import { Button, ButtonColors } from "@/shared/ui/button/button";
 import SumBadge from "./sumBadge";
 import OrderBadge from "@/features/badge/orderBadge";
@@ -14,7 +13,6 @@ interface IPaymentInfoBadge {
 
 const PaymentInfoBadge: FC<IPaymentInfoBadge> = ({ payment, orderId }) => {
   const [isActiveDetail, setIsActiveDetail] = useState(false);
-  const { currentSumCalc } = useCalcSum(payment);
 
   const toggleDetailInfo = useCallback(
     () => setIsActiveDetail((prev) => !prev),
@@ -41,7 +39,7 @@ const PaymentInfoBadge: FC<IPaymentInfoBadge> = ({ payment, orderId }) => {
             <h2 className="uppercase text-gray-mode-100 text-[14px]">
               Сумма к оплате
             </h2>
-            <SumBadge sum={currentSumCalc} align="start" />
+            <SumBadge sum={payment?.amount ?? 0} align="start" />
           </div>
           <div>
             <Button

@@ -12,7 +12,7 @@ const RootPage = () => {
         </div>
       }
     >
-      <div className="bg-[#F0F4FF] h-[calc(100vh-50px)] w-full relative overflow-hidden">
+      <div className="bg-[#F0F4FF] h-[calc(100dvh-60px)] w-full relative overflow-hidden">
         <div
           className="absolute hidden sm:block top-10 left-16 w-16 h-16 bg-[#E0E7FB] opacity-90 rounded-[30px] 
       animate-[float_5s_infinite_ease-in-out]"

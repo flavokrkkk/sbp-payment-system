@@ -1,6 +1,5 @@
 import { paymentSelectors } from "@/entities/payment";
 import ShopBadge from "@/features/badge/shopBadge";
-import { useCalcSum } from "@/features/payment/hooks/useCalcSum";
 import SumBadge from "@/features/payment/ui/sumBadge";
 import ToggleDesc from "@/features/payment/ui/toggleDesc";
 import { useAppSelector } from "@/shared";
@@ -14,9 +13,12 @@ export const PaymentCart = () => {
   const payment = useAppSelector(paymentSelectors.paymentParams);
   const orderId = useAppSelector(paymentSelectors.orderId);
 
-  const { currentSumCalc } = useCalcSum(payment);
-
-  if (!orderId) return <Loader className="animate-spin" />;
+  if (!orderId)
+    return (
+      <div className="w-full h-full flex justify-center items-center">
+        <Loader className="animate-spin " />
+      </div>
+    );
   return (
     <div className="w-full min-h-screen flex flex-col items-center h-full overflow-y-auto text-black relative">
       <div className="container mx-auto px-4 pb-20 py-10 flex justify-center">
@@ -30,7 +32,7 @@ export const PaymentCart = () => {
               <h2 className="uppercase text-gray-mode-100 text-[14px]">
                 Сумма к оплате
               </h2>
-              <SumBadge sum={currentSumCalc} />
+              <SumBadge sum={payment?.amount ?? 0} />
             </div>
             <div className="block w-full md:hidden">
               <PaymentInfoBadge payment={payment} orderId={orderId} />

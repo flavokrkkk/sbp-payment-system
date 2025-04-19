@@ -6,7 +6,6 @@ import {
   ButtonRoundSizes,
 } from "@/shared/ui/button/button";
 import { useAction, useAppSelector } from "@/shared";
-import { useCalcSumSuccess } from "../payment/hooks/useCalcSum";
 import SumBadge from "../payment/ui/sumBadge";
 import ToggleDesc from "../payment/ui/toggleDesc";
 import ShopBadge from "./shopBadge";
@@ -20,7 +19,6 @@ const SuccessPayment = () => {
   const orderId = useAppSelector(paymentSelectors.orderId);
 
   const { clearPaymentInfo } = useAction();
-  const { currentSumCalc } = useCalcSumSuccess(paymentParams?.amount ?? 0);
 
   const handleClear = () => {
     clearPaymentInfo();
@@ -90,7 +88,7 @@ const SuccessPayment = () => {
           >
             Оплата успешна
           </h1>
-          <SumBadge sum={currentSumCalc} align="start" />
+          <SumBadge sum={paymentParams?.amount ?? 0} align="start" />
         </section>
       </div>
       <div className="animate-[fadeIn_1.4s_ease-out]">

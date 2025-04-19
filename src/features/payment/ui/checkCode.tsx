@@ -2,7 +2,6 @@ import { paymentSelectors } from "@/entities/payment";
 import { useAppSelector } from "@/shared";
 import { IconTypes } from "@/shared/ui/icon/libs/libs";
 import { Icon } from "@/shared/ui/icon/ui/icon";
-import { useCalcSum } from "../hooks/useCalcSum";
 import ToggleDesc from "./toggleDesc";
 import SumBadge from "./sumBadge";
 import GenerateQrCode from "./generateQrCode";
@@ -16,7 +15,6 @@ const CheckCode = () => {
   const payment = useAppSelector(paymentSelectors.paymentParams);
   const orderId = useAppSelector(paymentSelectors.orderId);
 
-  const { currentSumCalc } = useCalcSum(payment);
   const { paymentLink } = useHyperLink(payment);
 
   if (!orderId) return <Loader className="animate-spin" />;
@@ -41,7 +39,7 @@ const CheckCode = () => {
               <h2 className="uppercase text-gray-mode-100 text-[14px]">
                 Сумма к оплате
               </h2>
-              <SumBadge sum={currentSumCalc} />
+              <SumBadge sum={payment?.amount ?? 0} />
             </div>
 
             <div className="w-full">

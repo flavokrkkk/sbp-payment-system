@@ -5,6 +5,7 @@ import svgr from "vite-plugin-svgr";
 import vitePluginBundleObfuscator from "vite-plugin-bundle-obfuscator";
 
 export default defineConfig({
+  base: "/payment/",
   server: {
     host: true,
     port: 5173,

@@ -62,11 +62,11 @@ const PaymentCartForm = () => {
       } = await handleEncryptedPayData(values);
 
       setIsLoading(true);
+      console.log(encryptedData);
 
       if (!deviceData || !encryptedData || !orderId || !clientIp) {
         return;
       }
-
       const paymentData = await handlePaymentCard({
         orderId,
         browserAcceptHeader,
@@ -84,7 +84,7 @@ const PaymentCartForm = () => {
       setIsLoading(false);
     }
   };
-  console.log(errors);
+
   return (
     <Form {...form}>
       <form
