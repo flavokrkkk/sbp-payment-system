@@ -38,21 +38,17 @@ const SuccessPayment = () => {
   }
 
   return (
-    <section className="flex flex-col p-3 sm:p-0 items-center justify-center h-screen space-y-6 animate-[fadeIn_0.8s_ease-out]">
+    <section className="flex flex-col overflow-auto p-3 sm:p-0 items-center md:justify-center h-screen space-y-6 animate-[fadeIn_0.8s_ease-out]">
       <h1 className="pb-6">
-        <Icon
-          type={IconTypes.CODE_PAY__OUTLINED}
-          className="animate-[bounce_1.5s_infinite_ease-in-out]"
-        />
+        <Icon type={IconTypes.CODE_PAY__OUTLINED} />
       </h1>
       <div
-        className="text-blue-mode-100 border-2 border-dashed rounded-3xl border-zinc-300 relative 
-      animate-[slideUp_0.9s_ease-out] bg-white/5"
+        className="text-blue-mode-100 w-full sm:w-fit border-2 border-dashed rounded-3xl border-zinc-300 relative 
+    animate-[slideUp_0.9s_ease-out] bg-white/5"
         style={{
           position: "relative",
           borderRadius: "30px",
           padding: "8px",
-          boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
           backgroundClip: "padding-box",
         }}
       >
@@ -60,7 +56,7 @@ const SuccessPayment = () => {
           <div>
             <div className="relative w-fit animate-[pulse_2s_infinite_ease-in-out]">
               <img
-                src="/images/Ellipse 169.png"
+                src="images/Ellipse 169.png"
                 className="w-full h-auto animate-[spin_8s_infinite_linear]"
                 alt="Фоновый круг"
               />
@@ -74,7 +70,7 @@ const SuccessPayment = () => {
             w-[70%] h-[70%] flex items-center justify-center"
               >
                 <img
-                  src="/public/images/LGOG.png"
+                  src="images/LGOG.png"
                   className="max-w-full max-h-full object-contain 
               animate-[float_2.5s_infinite_ease-in-out]"
                   alt="Логотип"
@@ -83,7 +79,7 @@ const SuccessPayment = () => {
             </div>
           </div>
           <h1
-            className="text-[32px] font-bold text-center leading-[45px] 
+            className="text-[20px] md:text-[32px] font-bold text-center md:leading-[45px] 
         animate-[fadeIn_1s_ease-out]"
           >
             Оплата успешна
@@ -99,7 +95,7 @@ const SuccessPayment = () => {
       </div>
       <div
         className="text-blue-mode-100 flex rounded-xl justify-center flex-col items-center 
-      w-full sm:w-[348px] animate-[slideUp_1.6s_ease-out]"
+    w-full sm:w-[348px] animate-[slideUp_1.6s_ease-out]"
       >
         <div className="w-full flex justify-start flex-col items-start space-y-6">
           <ToggleDesc payment={paymentParams} title="Детали платежа" />
@@ -122,9 +118,6 @@ const SuccessPayment = () => {
                 Публичная оферта
               </p>
             </DownloadFile>
-            <p className="border-b hover:text-blue-600 transition-colors duration-300">
-              Условия использования
-            </p>
           </div>
         </div>
       </div>

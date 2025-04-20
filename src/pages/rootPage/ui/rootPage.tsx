@@ -1,9 +1,11 @@
 import Footer from "@/widgets/footer";
+import clsx from "clsx";
 import { Loader } from "lucide-react";
 import { Suspense } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 
 const RootPage = () => {
+  const { pathname } = useLocation();
   return (
     <Suspense
       fallback={
@@ -12,7 +14,14 @@ const RootPage = () => {
         </div>
       }
     >
-      <div className="bg-[#F0F4FF] h-[calc(100dvh-60px)] w-full relative overflow-hidden">
+      <div
+        className={clsx(
+          "bg-[#F0F4FF] w-full relative overflow-hidden",
+          pathname !== "/payment/success_page"
+            ? " h-[calc(100dvh-60px)]"
+            : "h-screen"
+        )}
+      >
         <div
           className="absolute hidden sm:block top-10 left-16 w-16 h-16 bg-[#E0E7FB] opacity-90 rounded-[30px] 
       animate-[float_5s_infinite_ease-in-out]"
@@ -59,7 +68,7 @@ const RootPage = () => {
 
         <Outlet />
       </div>
-      <Footer />
+      {pathname !== "/payment/success_page" && <Footer />}
     </Suspense>
   );
 };

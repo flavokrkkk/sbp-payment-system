@@ -20,8 +20,14 @@ const SumBadge = ({
       )}
     >
       <span>{rubles}</span>
-      <span className="text-[20px] pl-0.5">,{kopecks}</span>
-      <Icon type={IconTypes.RUBLE_ICON} className="pl-0.5" />
+      <div className="relative flex items-center">
+        <Icon
+          type={IconTypes.COMMA_ICON}
+          className="absolute -left-[2px] top-[15px] transform -translate-y-1/3 h-4 w-4 text-blue-mode-100"
+        />
+        <span className="text-[20px] pl-2">{kopecks}</span>
+      </div>
+      <Icon type={IconTypes.RUBLE_ICON} className="pl-1" />
     </div>
   );
 };

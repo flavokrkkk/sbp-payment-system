@@ -10,6 +10,7 @@ import BgPinkOutlined from "../../../../../public/icons/right-t&pink.svg";
 import CodePayLogo from "../../../../../public/icons/codePayLogo.svg";
 import ShopIcon from "../../../../../public/icons/shopIcon.svg";
 import RubleIcon from "../../../../../public/icons/ruble.svg";
+import Comma from "../../../../../public/icons/Comma.svg";
 
 export const enum IconTypes {
   CODE_PAY_OUTLINED,
@@ -24,6 +25,7 @@ export const enum IconTypes {
   CODE_PAY__OUTLINED,
   SHOP_ICON,
   RUBLE_ICON,
+  COMMA_ICON,
 }
 
 export type IconDictionaryType = {
@@ -43,6 +45,7 @@ export const IconDictionary: Record<string, string> = {
   [IconTypes.CODE_PAY__OUTLINED]: CodePayLogo,
   [IconTypes.SHOP_ICON]: ShopIcon,
   [IconTypes.RUBLE_ICON]: RubleIcon,
+  [IconTypes.COMMA_ICON]: Comma,
 };
 export const enum IconSizes {
   SMALL,
