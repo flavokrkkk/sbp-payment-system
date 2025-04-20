@@ -18,7 +18,7 @@ const PaymentPolling = () => {
     enabled: !!orderId,
     onSuccess: (data) => {
       if (data.payment_status === "paid") {
-        navigate(`/success_page?order_id=${orderId}`);
+        navigate(`/payment/success_page?order_id=${orderId}`);
       }
       if (data.payment_status === "undefined" || !data.payment_details) {
         navigate(ERouteNames.PAYMENT_CLOSE_PAGE);

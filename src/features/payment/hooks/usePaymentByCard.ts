@@ -130,7 +130,7 @@ export const usePaymentByCard = ({
             window.open(paymentData.threeDsData.url, "_self");
             break;
           case "Paid":
-            navigate(`/success_page?order_id=${orderId}`);
+            navigate(`/payment/success_page?order_id=${orderId}`);
             break;
           case "Declined":
             navigate(ERouteNames.PAYMENT_CLOSE_PAGE);
