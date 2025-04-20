@@ -52,6 +52,7 @@ const PaymentCartForm = () => {
     usePaymentByCard({ setValidateError });
 
   const onFormSubmit = async (values: CardFormData) => {
+    setIsLoading(true);
     try {
       const {
         deviceData,
@@ -60,8 +61,6 @@ const PaymentCartForm = () => {
         clientIp,
         userAgent,
       } = await handleEncryptedPayData(values);
-
-      setIsLoading(true);
 
       if (!deviceData || !encryptedData || !orderId || !clientIp) {
         return;
@@ -257,6 +256,7 @@ const PaymentCartForm = () => {
           <Button
             isDisabled={isLoading}
             type={ButtonTypes.SUBMIT}
+            hoverEffect="darken"
             className={clsx("w-full flex justify-center")}
             rounded={ButtonRoundSizes.ROUNDED_2XL}
             bgColor={ButtonColors.TIFFANY}

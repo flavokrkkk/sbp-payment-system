@@ -43,7 +43,7 @@ export const usePaymentByCard = ({
     const cardData = {
       number: values.cardNumber.replace(/\s/g, ""),
       expirationMonth: parseInt(expiryMonth, 10),
-      expirationYear: parseInt(`20${expiryYear}`, 10),
+      expirationYear: Number(expiryYear),
       cvv: values.cvv,
       cardHolderName: values.cardName,
     };

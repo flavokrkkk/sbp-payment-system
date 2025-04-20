@@ -88,6 +88,12 @@ export const ButtonBorderColorClasses: Record<ButtonBorderColors, string> = {
   [ButtonBorderColors.SILVER]: "border-silver",
 };
 
+export const ButtonHoverEffects = {
+  darken: "hover:brightness-90",
+  lighten: "hover:brightness-110",
+  none: "",
+} as const;
+
 export const ButtonRoundSizeClasses: Record<ButtonRoundSizes, string> = {
   [ButtonRoundSizes.NONE]: "rounded-none",
   [ButtonRoundSizes.ROUNDED_SM]: "rounded-sm",
@@ -107,6 +113,7 @@ export enum ButtonTypes {
 
 export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   text?: string;
+  hoverEffect?: "darken" | "lighten" | "none";
   className?: string;
   isDisabled?: boolean;
   image?: string;
@@ -127,6 +134,7 @@ export const Button: FC<ButtonProps> = memo(
   ({
     onClick,
     className,
+    hoverEffect,
     isDisabled,
     type = ButtonTypes.BUTTON,
     size = ButtonSizes.SMALL,
@@ -150,6 +158,10 @@ export const Button: FC<ButtonProps> = memo(
       ${ButtonRoundSizeClasses[rounded]}
       ${ButtonBorderSizeClasses[borderSize]}
 			${ButtonBorderColorClasses[borderColors]}
+          ${
+            !isDisabled &&
+            ButtonHoverEffects[hoverEffect as keyof typeof ButtonHoverEffects]
+          }
       
     `,
         className && className

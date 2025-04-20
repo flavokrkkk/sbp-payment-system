@@ -11,7 +11,7 @@ const ClosePayment = () => {
         />
       </span>
       <h1 className="text-[24px] sm:text-[32px] font-bold text-center sm:leading-[45px]">
-        Время на оплату счета истекло
+        Платёж отклонён или истёк
       </h1>
       <p className="sm:text-xl text-center">
         Запросите новую ссылку для оплаты
