@@ -116,6 +116,7 @@ export const usePaymentByCard = ({
       }
 
       const userGmt = getLocalTimezoneWithGMT();
+      const gmtNumber = Number(userGmt);
 
       const paymentData = await getPaymentProvideCard({
         order_id: orderId,
@@ -124,6 +125,7 @@ export const usePaymentByCard = ({
           ...deviceData,
           browserAcceptHeader,
           browserUserAgent: userAgent,
+          browserTZ: gmtNumber,
           browserTZName: `UTC${userGmt}`,
         },
         ip: clientIp,

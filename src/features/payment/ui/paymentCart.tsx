@@ -42,7 +42,7 @@ export const PaymentCart = () => {
             </div>
             <PaymentCartForm />
 
-            <p className="text-center pt-0.5 md:pt-0 text-gray-mode-100 text-xs md:text-[14px] max-w-[236px] md:max-w-[306px] ">
+            <p className="text-center pt-4 text-gray-mode-100 text-xs md:text-[14px] max-w-[236px] md:max-w-[306px] ">
               Оплачивая покупку, вы соглашаетесь с{" "}
               <DownloadFile link={EAcceptFiles.ACCEPT_FILE}>
                 <span className="border-b border-zinc-500 cursor-pointer">
