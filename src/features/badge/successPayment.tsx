@@ -29,7 +29,12 @@ const SuccessPayment = () => {
     paymentSelectors.paymentSuccessStatus
   );
 
-  if (paymentSuccessStatus !== "paid" || !orderId) {
+  if (
+    paymentSuccessStatus !== "paid" ||
+    !orderId ||
+    !paymentParams?.description ||
+    !paymentParams.amount
+  ) {
     return (
       <div className="h-full w-full flex justify-center items-center">
         <Loader className="animate-spin text-[#30F1E4]" />
@@ -71,15 +76,14 @@ const SuccessPayment = () => {
               >
                 <img
                   src="images/LGOG.png"
-                  className="max-w-full max-h-full object-contain 
-              animate-[float_2.5s_infinite_ease-in-out]"
+                  className="max-w-full max-h-full object-contain animate-pulse"
                   alt="Логотип"
                 />
               </div>
             </div>
           </div>
           <h1
-            className="text-[20px] md:text-[32px] font-bold text-center md:leading-[45px] 
+            className="text-[28px] md:text-[32px] font-bold text-center md:leading-[45px] 
         animate-[fadeIn_1s_ease-out]"
           >
             Оплата успешна
@@ -114,7 +118,7 @@ const SuccessPayment = () => {
           animate-[fadeIn_2s_ease-out]"
           >
             <DownloadFile link={EAcceptFiles.ACCEPT_FILE}>
-              <p className="border-b hover:text-blue-600 transition-colors duration-300">
+              <p className="border-b border-[#00103C] opacity-50 hover:text-blue-600 text-[#00103C] transition-colors duration-300">
                 Публичная оферта
               </p>
             </DownloadFile>

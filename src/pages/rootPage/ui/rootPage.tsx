@@ -68,7 +68,7 @@ const RootPage = () => {
 
         <Outlet />
       </div>
-      {pathname !== "/payment/success_page" && <Footer />}
+      {pathname.toLowerCase() !== "/payment/success_page" && <Footer />}
     </Suspense>
   );
 };
