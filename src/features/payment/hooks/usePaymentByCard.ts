@@ -119,7 +119,7 @@ export const usePaymentByCard = ({
         deviceData: {
           ...deviceData,
           browserAcceptHeader,
-          userAgent,
+          browserUserAgent: userAgent,
         },
         ip: clientIp,
       });

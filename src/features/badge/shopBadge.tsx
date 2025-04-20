@@ -24,8 +24,8 @@ const ShopBadge = ({
       <Icon
         type={IconTypes.SHOP_ICON}
         className={clsx(
-          "z-10",
-          isAnimate && "animate-[bounce_2s_infinite_ease-in-out] "
+          "z-10  mb-0.5",
+          isAnimate && "animate-[bounce_2s_infinite_ease-in-out]"
         )}
       />
       <h1

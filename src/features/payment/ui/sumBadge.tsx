@@ -19,8 +19,9 @@ const SumBadge = ({
       )}
     >
       <span>{rubles}</span>
-      <span className="text-[20px]">,{kopecks}</span>
-      <span className="pl-1">₽</span>
+      <span className="pl-0.5">,</span>
+      <span className="text-[20px]">{kopecks}</span>
+      <span className="pl-2">₽</span>
     </div>
   );
 };

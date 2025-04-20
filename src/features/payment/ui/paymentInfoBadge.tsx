@@ -20,7 +20,7 @@ const PaymentInfoBadge: FC<IPaymentInfoBadge> = ({ payment, orderId }) => {
   );
 
   return (
-    <div className="flex w-full flex-col space-y-3 relative p-1 border-dashed border-2 rounded-2xl group">
+    <div className="flex w-full flex-col space-y-3 border-[#CFDBFB] relative p-1 border-dashed border-2 rounded-2xl group">
       <div
         className="rounded-xl p-3"
         style={{
@@ -31,8 +31,8 @@ const PaymentInfoBadge: FC<IPaymentInfoBadge> = ({ payment, orderId }) => {
       >
         <section
           className={clsx(
-            "flex w-full justify-between",
-            isActiveDetail && "border-b-2"
+            "flex w-full justify-between items-center",
+            isActiveDetail && "border-b-2 border-[#CFDBFB] "
           )}
         >
           <div>
@@ -63,7 +63,7 @@ const PaymentInfoBadge: FC<IPaymentInfoBadge> = ({ payment, orderId }) => {
         >
           {isActiveDetail && (
             <div className="animate-[slideDown_0.5s_ease-out] duration-150 space-y-3 ease-out transition-all">
-              <div className="flex justify-center border-b-2 pb-4 flex-col items-start space-y-2 pt-4">
+              <div className="flex justify-center border-b-2 border-[#CFDBFB]  pb-4 flex-col items-start space-y-2 pt-4">
                 <h2 className="uppercase text-gray-mode-100 text-[14px]">
                   Описание платежа
                 </h2>
