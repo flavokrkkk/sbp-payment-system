@@ -21,7 +21,7 @@ export const PaymentCart = () => {
     );
   return (
     <div className="w-full min-h-screen flex flex-col items-center h-full overflow-y-auto text-black relative">
-      <div className="container mx-auto px-4 pb-20 py-10 flex justify-center">
+      <div className="container mx-auto px-4 pb-20 py-4 md:py-10 flex justify-center">
         <section className="flex relative w-full max-w-[360px] flex-col items-center sm:items-start space-y-5">
           <div className="w-full flex items-center justify-center">
             <ShopBadge shopName={payment?.shop_name ?? ""} />
@@ -42,7 +42,7 @@ export const PaymentCart = () => {
             </div>
             <PaymentCartForm />
 
-            <p className="text-center pt-6 md:pt-0 text-gray-mode-100 text-[14px] max-w-[306px] ">
+            <p className="text-center pt-0.5 md:pt-0 text-gray-mode-100 text-xs md:text-[14px] max-w-[236px] md:max-w-[306px] ">
               Оплачивая покупку, вы соглашаетесь с{" "}
               <DownloadFile link={EAcceptFiles.ACCEPT_FILE}>
                 <span className="border-b border-zinc-500 cursor-pointer">
