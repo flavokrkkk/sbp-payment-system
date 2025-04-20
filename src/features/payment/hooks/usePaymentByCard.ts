@@ -8,6 +8,7 @@ import {
   errorMessages,
   errorMessagesKey,
 } from "@/shared/libs/utils/cardErrors";
+import { getLocalTimezoneWithGMT } from "@/shared/libs/utils/getLocalTimezoneGmt";
 import { useEffect, useState } from "react";
 import { UseFormSetError } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -113,6 +114,9 @@ export const usePaymentByCard = ({
         setValidateError("root", { message: "Не удалось определить IP-адрес" });
         return null;
       }
+
+      const userGmt = getLocalTimezoneWithGMT();
+
       const paymentData = await getPaymentProvideCard({
         order_id: orderId,
         cardCrypto: encryptedData.encryptedString,
@@ -120,6 +124,7 @@ export const usePaymentByCard = ({
           ...deviceData,
           browserAcceptHeader,
           browserUserAgent: userAgent,
+          browserTZName: `UTC${userGmt}`,
         },
         ip: clientIp,
       });

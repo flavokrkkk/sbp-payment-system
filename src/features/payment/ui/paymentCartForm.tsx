@@ -62,7 +62,6 @@ const PaymentCartForm = () => {
       } = await handleEncryptedPayData(values);
 
       setIsLoading(true);
-      console.log(encryptedData);
 
       if (!deviceData || !encryptedData || !orderId || !clientIp) {
         return;

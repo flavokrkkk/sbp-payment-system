@@ -1,3 +1,5 @@
+import { IconTypes } from "@/shared/ui/icon/libs/libs";
+import { Icon } from "@/shared/ui/icon/ui/icon";
 import clsx from "clsx";
 
 const SumBadge = ({
@@ -9,7 +11,6 @@ const SumBadge = ({
   align?: "center" | "start";
 }) => {
   const [rubles, kopecks] = sum.toFixed(2).split(".");
-
   return (
     <div
       className={clsx(
@@ -19,9 +20,8 @@ const SumBadge = ({
       )}
     >
       <span>{rubles}</span>
-      <span className="pl-0.5">,</span>
-      <span className="text-[20px]">{kopecks}</span>
-      <span className="pl-2">₽</span>
+      <span className="text-[20px] pl-0.5">,{kopecks}</span>
+      <Icon type={IconTypes.RUBLE_ICON} className="pl-0.5" />
     </div>
   );
 };
