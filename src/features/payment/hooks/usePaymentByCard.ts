@@ -134,7 +134,27 @@ export const usePaymentByCard = ({
       if (paymentData) {
         switch (paymentData.transactionStatus) {
           case "Pending":
-            window.open(paymentData.threeDsData.url, "_self");
+            if (paymentData.threeDsData.method === "GET") {
+              window.open(paymentData.threeDsData.url, "_self");
+            } else {
+              const form = document.createElement("form");
+              form.method = paymentData.threeDsData.method;
+              form.action = paymentData.threeDsData.url;
+              form.style.display = "none";
+
+              for (const [key, value] of Object.entries(
+                paymentData.threeDsData.parameters
+              )) {
+                const input = document.createElement("input");
+                input.type = "hidden";
+                input.name = key;
+                input.value = value;
+                form.appendChild(input);
+              }
+
+              document.body.appendChild(form);
+              form.submit();
+            }
             break;
           case "Paid":
             navigate(`/payment/success_page?order_id=${orderId}`);
@@ -165,7 +185,6 @@ export const usePaymentByCard = ({
       return null;
     }
   };
-
   useEffect(() => {
     if (window.WataCheckout) {
       setCheckout(window.WataCheckout());

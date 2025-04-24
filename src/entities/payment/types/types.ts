@@ -43,7 +43,7 @@ export interface IPaymentCardProvideResponse {
   transactionStatus: "Pending" | "Paid" | "Declined";
   threeDsData: {
     url: string;
-    method: "POST";
+    method: "POST" | "GET";
     parameters: {
       creq: string;
       threeDSSessionData: string;
